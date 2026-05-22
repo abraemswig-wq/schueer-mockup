@@ -475,9 +475,13 @@
 
   /* ─── FOOTER ─── */
   footer { background: var(--ink); color: rgba(243, 236, 220, 0.65); padding: 90px 0 28px; position: relative; }
-  .footer-mark { font-family: 'DM Serif Display', serif; font-size: clamp(90px, 18vw, 280px); line-height: 0.85; color: var(--paper); letter-spacing: -0.04em; margin-bottom: 80px; }
+  .footer-mark-block { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 80px; flex-wrap: wrap; }
+  .footer-mark { font-family: 'DM Serif Display', serif; font-size: clamp(90px, 18vw, 280px); line-height: 0.85; color: var(--paper); letter-spacing: -0.04em; }
   .footer-mark em { color: var(--brand); }
-  .footer-mark sup { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 0.18em; color: var(--brand); vertical-align: top; margin-left: 8px; }
+  .footer-est { text-align: right; padding-bottom: 18px; }
+  .footer-est-label { font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.32em; color: var(--brand); margin-bottom: 12px; }
+  .footer-est-value { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 32px; color: var(--paper); line-height: 1; }
+  .footer-est-sub { margin-top: 14px; font-size: 12px; color: rgba(243, 236, 220, 0.55); letter-spacing: 0.05em; }
   .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 60px; padding-top: 60px; border-top: 1px solid rgba(243, 236, 220, 0.1); margin-bottom: 56px; }
   .footer-about { font-size: 14px; line-height: 1.7; max-width: 320px; }
   footer h5 { color: var(--paper); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.26em; margin-bottom: 24px; font-weight: 600; }
@@ -512,6 +516,8 @@
     .chronik-left, .spread-text { position: static; padding-top: 0; }
     .pullquote-mark { font-size: 240px; left: -5%; }
     .footer-mark { font-size: 70px; }
+    .footer-mark-block { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .footer-est { text-align: left; padding-bottom: 0; }
   }
 </style>
 </head>
@@ -821,7 +827,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="footer-mark">Schüer<em>.</em><sup>est. 1990</sup></div>
+    <div class="footer-mark-block">
+      <div class="footer-mark">Schüer<em>.</em></div>
+      <div class="footer-est">
+        <div class="footer-est-label">— Established</div>
+        <div class="footer-est-value">Anno MCMXC</div>
+        <div class="footer-est-sub">Rosendahl · Münster</div>
+      </div>
+    </div>
 
     <div class="footer-grid">
       <div>
