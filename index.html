@@ -786,6 +786,203 @@
     .faq { padding: 80px 0; }
   }
 
+  /* ─── CINEMA INTRO (Scroll-Expand-Media, Vanilla-Port) ─── */
+  .intro-cinema {
+    position: relative;
+    height: 260vh;
+    background: var(--ink);
+    margin-bottom: 0;
+  }
+  .intro-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .intro-bg {
+    position: absolute;
+    inset: -10%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(36px) brightness(0.45) saturate(0.85);
+    transform: scale(1.15);
+    z-index: 0;
+  }
+  .intro-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(23,18,40,0.4) 50%, rgba(23,18,40,0.85) 100%);
+  }
+
+  .intro-title-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 320px));
+    z-index: 4;
+    text-align: center;
+    width: min(92vw, 800px);
+    opacity: var(--intro-text-opacity, 1);
+    pointer-events: none;
+    color: var(--paper);
+    will-change: opacity, transform;
+  }
+  .intro-eyebrow {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: var(--brand);
+    margin-bottom: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .intro-eyebrow::before,
+  .intro-eyebrow::after {
+    content: '';
+    width: 36px; height: 1px; background: var(--brand);
+  }
+  .intro-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(88px, 14vw, 220px);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+    color: var(--paper);
+    font-weight: 400;
+  }
+  .intro-title em {
+    font-style: italic;
+    color: var(--brand);
+  }
+  .intro-subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 26px);
+    color: var(--paper);
+    opacity: 0.8;
+    margin-top: 20px;
+    letter-spacing: -0.005em;
+  }
+
+  .intro-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(72vw, 440px);
+    aspect-ratio: 4/5;
+    transform: translate(-50%, -50%) scale(var(--intro-scale, 0.55));
+    transform-origin: center center;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 60px 120px -30px rgba(0,0,0,0.6), 0 0 0 1px rgba(204,183,135,0.15);
+    will-change: transform;
+    z-index: 2;
+  }
+  .intro-card img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transform: scale(1.05);
+  }
+  .intro-card-frame {
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(204, 183, 135, 0.25);
+    pointer-events: none;
+    z-index: 3;
+    opacity: var(--intro-text-opacity, 1);
+  }
+  .intro-card-label {
+    position: absolute;
+    bottom: 22px;
+    left: 26px;
+    right: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 4;
+    opacity: var(--intro-text-opacity, 1);
+    color: var(--paper);
+  }
+  .intro-card-label .l {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 6px;
+  }
+  .intro-card-label .t {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.1;
+  }
+  .intro-card-label .r {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    line-height: 0.85;
+    color: var(--brand);
+  }
+
+  .intro-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: var(--paper);
+    opacity: var(--intro-hint-opacity, 1);
+    z-index: 5;
+    pointer-events: none;
+    font-weight: 500;
+  }
+  .intro-hint-arrow {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 0.5;
+    color: var(--brand);
+    animation: introBounce 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  @keyframes introBounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(10px); opacity: 0.5; }
+  }
+
+  /* Header während Intro: transparent + helle Schrift */
+  body.intro-active header {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom-color: transparent !important;
+  }
+  body.intro-active .nav-brand-name,
+  body.intro-active .nav-links a,
+  body.intro-active .nav-phone { color: var(--paper); }
+  body.intro-active .nav-brand-sub { color: var(--brand); }
+  body.intro-active .nav-cta {
+    background: var(--brand);
+    color: var(--ink);
+  }
+  body.intro-active .nav-cta:hover { background: var(--paper); }
+  body.intro-active .nav-brand img { filter: brightness(1.4); }
+
+  @media (max-width: 820px) {
+    .intro-cinema { height: 200vh; }
+    .intro-card { width: 75vw; max-width: none; }
+    .intro-title-block { transform: translate(-50%, calc(-50% - 230px)); }
+    .intro-hint { bottom: 24px; }
+  }
+
   /* ─── ADVANCED ANIMATIONS ─── */
 
   /* Hairline draw-in für .rule-label */
@@ -819,6 +1016,10 @@
     }
     .footer-mark { text-shadow: none !important; }
     .rule-label::before, .rule-label::after { transform: scaleX(1) !important; transition: none !important; }
+    .intro-cinema { height: 100vh !important; }
+    .intro-card { transform: translate(-50%, -50%) scale(1) !important; }
+    .intro-hint-arrow { animation: none !important; }
+    .intro-title-block { opacity: 0 !important; }
   }
 
   /* ─── RESPONSIVE ─── */
@@ -887,6 +1088,36 @@
 </header>
 
 <main id="main">
+
+<!-- CINEMA INTRO (Scroll-Expand) -->
+<section class="intro-cinema" aria-label="Einleitung Schüer Immobilien">
+  <div class="intro-sticky">
+    <div class="intro-bg" style="background-image: url('https://cdn.prod.website-files.com/63be7bd04823666354300253/6447dc21591a3a21ed9b7805_Familienunternehmen_Schu%CC%88er_Immobilien.jpg');"></div>
+
+    <div class="intro-title-block">
+      <div class="intro-eyebrow">Anno MCMXC — Familienunternehmen</div>
+      <div class="intro-title">Schüer<em>.</em></div>
+      <div class="intro-subtitle">Immobilien · Rosendahl · Münster</div>
+    </div>
+
+    <div class="intro-card">
+      <img src="https://cdn.prod.website-files.com/63be7bd04823666354300253/6447dc21591a3a21ed9b7805_Familienunternehmen_Schu%CC%88er_Immobilien.jpg" alt="Die Familie Schüer" width="800" height="1000" fetchpriority="high">
+      <div class="intro-card-frame"></div>
+      <div class="intro-card-label">
+        <div>
+          <div class="l">Tafel — Familie Schüer</div>
+          <div class="t">Drei Generationen,<br>ein Versprechen.</div>
+        </div>
+        <div class="r">01</div>
+      </div>
+    </div>
+
+    <div class="intro-hint">
+      <span>Scrollen, um zu öffnen</span>
+      <span class="intro-hint-arrow">↓</span>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <section class="hero">
@@ -1215,6 +1446,87 @@
 </main>
 
 <script>
+  /* ─── CINEMA INTRO: Scroll-Expand-Media (Vanilla-Port) ─── */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cinema = document.querySelector('.intro-cinema');
+    var sticky = document.querySelector('.intro-sticky');
+    var card = document.querySelector('.intro-card');
+    if (!cinema || !sticky || !card) return;
+
+    if (reduce) {
+      sticky.style.setProperty('--intro-scale', '1');
+      sticky.style.setProperty('--intro-text-opacity', '0');
+      sticky.style.setProperty('--intro-hint-opacity', '0');
+      return;
+    }
+
+    var raf = null;
+    var maxScaleCache = null;
+
+    function computeMaxScale() {
+      var cardW = card.offsetWidth;
+      var cardH = card.offsetHeight;
+      if (!cardW || !cardH) return 3;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      // Skaliere so, dass die Card BEIDE Dimensionen füllt + 10% Overscan
+      return Math.max(vw / cardW, vh / cardH) * 1.08;
+    }
+
+    function update() {
+      var rect = cinema.getBoundingClientRect();
+      var total = cinema.offsetHeight - window.innerHeight;
+      if (total <= 0) { raf = null; return; }
+
+      var scrolled = Math.max(0, -rect.top);
+      var progress = Math.max(0, Math.min(1, scrolled / total));
+
+      if (maxScaleCache === null) maxScaleCache = computeMaxScale();
+
+      var startScale = 0.55;
+      var scale = startScale + (maxScaleCache - startScale) * easeOutQuad(progress);
+
+      // Text fades out in den ersten ~55% des Scrolls
+      var textOpacity = Math.max(0, 1 - progress * 1.85);
+      // Hint fades sehr schnell weg (sobald User merkt, dass es funktioniert)
+      var hintOpacity = Math.max(0, 1 - progress * 5);
+
+      sticky.style.setProperty('--intro-scale', scale.toFixed(3));
+      sticky.style.setProperty('--intro-text-opacity', textOpacity.toFixed(3));
+      sticky.style.setProperty('--intro-hint-opacity', hintOpacity.toFixed(3));
+
+      // Header während Intro aktiv (transparent + helle Schrift)
+      if (progress < 0.92) {
+        document.body.classList.add('intro-active');
+      } else {
+        document.body.classList.remove('intro-active');
+      }
+
+      raf = null;
+    }
+
+    function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
+
+    function schedule() {
+      if (raf === null) raf = requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', function () {
+      maxScaleCache = null;
+      schedule();
+    }, { passive: true });
+
+    // Initial Run nach Layout
+    if (document.readyState === 'complete') {
+      update();
+    } else {
+      window.addEventListener('load', update);
+    }
+    update();
+  })();
+
   /* ─── (1) Hero — 3D Mouse-Tilt (max 4°) ─── */
   (function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
