@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# AI / LLM Crawlers — explizit erlaubt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://abraemswig-wq.github.io/schueer-mockup/sitemap.xml

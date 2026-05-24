@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Schüer Immobilien — Corporate Identity Program</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #ccb787;
+    --brand-deep: #a8895a;
+    --ink: #171228;
+    --paper: #f3ecdc;
+    --paper-2: #ebe1c9;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Raleway', sans-serif; background: #e8e1cf; color: var(--ink); padding: 60px 40px; min-height: 100vh; }
+  .container { max-width: 1300px; margin: 0 auto; }
+  h1 { font-family: 'DM Serif Display', serif; font-size: 56px; margin-bottom: 8px; letter-spacing: -0.02em; }
+  h1 em { font-style: italic; color: var(--brand-deep); }
+  .subtitle { font-size: 14px; color: #6b6478; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 60px; }
+
+  .asset-group { margin-bottom: 80px; }
+  .asset-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.3em; color: var(--brand-deep); margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+  .asset-label::before { content: ''; width: 32px; height: 1px; background: var(--brand-deep); }
+
+  .row { display: flex; gap: 32px; flex-wrap: wrap; }
+
+  /* ──────────────── VISITENKARTE 85×55 mm ──────────────── */
+  .card {
+    width: 425px;          /* 85mm @ 5px/mm */
+    height: 275px;         /* 55mm */
+    border-radius: 4px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-front { background: var(--paper); padding: 32px 30px; display: flex; flex-direction: column; justify-content: space-between; }
+  .card-front::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.5; mix-blend-mode: multiply; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0 0.16 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .card-front > * { position: relative; z-index: 2; }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .card-logo { display: flex; align-items: center; gap: 10px; }
+  .card-logo img { width: 28px; height: auto; }
+  .card-brand-name { font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1; letter-spacing: -0.015em; }
+  .card-brand-sub { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand-deep); margin-top: 4px; }
+  .card-est { text-align: right; font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; color: var(--brand-deep); }
+  .card-name { font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1; letter-spacing: -0.015em; }
+  .card-role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.28em; color: #6b6478; margin-top: 8px; }
+  .card-foot { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 16px; border-top: 1px solid rgba(23,18,40,0.15); }
+  .card-contact { font-size: 11px; line-height: 1.6; color: #2a2240; }
+  .card-contact strong { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ink); font-weight: 400; font-size: 13px; }
+  .card-tag { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; color: var(--brand-deep); }
+
+  .card-back { background: var(--ink); color: var(--paper); padding: 32px 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+  .card-back-tag {
+    font-family: 'DM Serif Display', serif; font-size: 38px; line-height: 1.1; letter-spacing: -0.02em;
+  }
+  .card-back-tag em { font-style: italic; color: var(--brand); }
+  .card-back-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--brand); margin-bottom: 18px; }
+  .card-back-est { margin-top: 24px; font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; color: var(--brand); }
+
+  /* ──────────────── BRIEFKOPF A4 ──────────────── */
+  .letterhead {
+    width: 530px;       /* A4 verkleinert ~25% */
+    height: 750px;
+    background: var(--paper);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3);
+    padding: 50px 56px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .letterhead::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.45; mix-blend-mode: multiply; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0 0.16 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .letterhead > * { position: relative; z-index: 2; }
+  .lh-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 22px; border-bottom: 1px solid var(--ink); }
+  .lh-logo { display: flex; align-items: center; gap: 12px; }
+  .lh-logo img { width: 32px; }
+  .lh-brand-name { font-family: 'DM Serif Display', serif; font-size: 24px; line-height: 1; }
+  .lh-brand-sub { font-size: 8.5px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand-deep); margin-top: 4px; }
+  .lh-meta { text-align: right; font-size: 10px; color: #6b6478; line-height: 1.6; }
+  .lh-meta strong { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ink); font-weight: 400; }
+  .lh-recipient { margin-top: 50px; font-size: 11px; line-height: 1.7; color: #2a2240; }
+  .lh-date { text-align: right; font-size: 10px; color: #6b6478; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 30px; }
+  .lh-subject { font-family: 'DM Serif Display', serif; font-size: 22px; margin-top: 28px; margin-bottom: 22px; letter-spacing: -0.01em; }
+  .lh-body { font-size: 11px; line-height: 1.75; color: #2a2240; flex: 1; }
+  .lh-body p { margin-bottom: 12px; }
+  .lh-sign { margin-top: 24px; font-family: 'DM Serif Display', serif; font-style: italic; font-size: 16px; color: var(--ink); }
+  .lh-foot { padding-top: 16px; border-top: 1px solid rgba(23,18,40,0.15); display: flex; justify-content: space-between; font-size: 8.5px; color: #6b6478; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 18px; }
+
+  /* ──────────────── INSTAGRAM STORY 1080×1920 (verkleinert) ──────────────── */
+  .story {
+    width: 270px;     /* 25% of 1080 */
+    height: 480px;    /* 25% of 1920 */
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35);
+  }
+  .story-1 { background: var(--ink); color: var(--paper); padding: 30px 24px; display: flex; flex-direction: column; justify-content: space-between; }
+  .story-1::before {
+    content: '"';
+    position: absolute; top: -30px; left: 10px;
+    font-family: 'DM Serif Display', serif; font-style: italic; font-size: 280px; line-height: 0.7;
+    color: var(--brand); opacity: 0.15;
+  }
+  .story-top-label { font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--brand); }
+  .story-quote { font-family: 'DM Serif Display', serif; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; position: relative; z-index: 2; }
+  .story-quote em { font-style: italic; color: var(--brand); }
+  .story-foot { display: flex; align-items: center; gap: 10px; }
+  .story-foot img { width: 28px; }
+  .story-foot-text { font-family: 'DM Serif Display', serif; font-size: 14px; line-height: 1; }
+  .story-foot-text small { display: block; font-family: 'Raleway', sans-serif; font-size: 7px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand); margin-top: 3px; }
+
+  .story-2 {
+    background:
+      linear-gradient(180deg, rgba(243,236,220,0.1) 0%, rgba(23,18,40,0.6) 70%, rgba(23,18,40,0.9)),
+      url('https://cdn.prod.website-files.com/63be7bd04823666354300253/6447dc21591a3a21ed9b7805_Familienunternehmen_Schu%CC%88er_Immobilien.jpg') center/cover;
+    color: var(--paper);
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .story-2-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .story-2-logo { display: flex; align-items: center; gap: 8px; }
+  .story-2-logo img { width: 24px; }
+  .story-2-logo-name { font-family: 'DM Serif Display', serif; font-size: 16px; line-height: 1; }
+  .story-2-logo-sub { font-size: 7px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand); margin-top: 3px; }
+  .story-2-tag { font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand); }
+  .story-2-text {
+    font-family: 'DM Serif Display', serif; font-size: 30px; line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .story-2-text em { font-style: italic; color: var(--brand); }
+  .story-2-cta { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brand); padding-top: 14px; border-top: 1px solid rgba(204,183,135,0.4); display: flex; justify-content: space-between; align-items: center; }
+  .story-2-cta-arrow { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 18px; line-height: 0; }
+
+  .story-3 {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .story-3::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.4; mix-blend-mode: multiply; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0 0.16 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .story-3 > * { position: relative; z-index: 2; }
+  .story-3-cap { font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--brand-deep); }
+  .story-3-num {
+    font-family: 'DM Serif Display', serif; font-size: 140px; line-height: 0.85; letter-spacing: -0.04em; color: var(--ink);
+  }
+  .story-3-num em { font-style: italic; color: var(--brand-deep); }
+  .story-3-label { font-family: 'DM Serif Display', serif; font-size: 24px; line-height: 1.1; letter-spacing: -0.015em; }
+  .story-3-label em { font-style: italic; color: var(--brand-deep); }
+  .story-3-foot { display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid rgba(23,18,40,0.2); font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase; color: #6b6478; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Corporate Identity <em>Program</em></h1>
+  <div class="subtitle">— Schüer Immobilien · Familien-Monograph</div>
+
+  <!-- VISITENKARTE -->
+  <div class="asset-group">
+    <div class="asset-label">01 — Visitenkarte · 85 × 55 mm · Vorder- &amp; Rückseite</div>
+    <div class="row">
+
+      <div class="card card-front">
+        <div class="card-top">
+          <div class="card-logo">
+            <img src="https://cdn.prod.website-files.com/63be7bd04823666354300253/640b40a844ffd080d882c3c4_Logo_Haus_%23ccb787.png" alt="">
+            <div>
+              <div class="card-brand-name">Schüer</div>
+              <div class="card-brand-sub">Immobilien</div>
+            </div>
+          </div>
+          <div class="card-est">Anno MCMXC</div>
+        </div>
+        <div>
+          <div class="card-name">Andreas Schüer</div>
+          <div class="card-role">Geschäftsführung — Zweite Generation</div>
+        </div>
+        <div class="card-foot">
+          <div class="card-contact">
+            <strong>02547 · 1637</strong><br>
+            andreas@schueer-immobilien.de<br>
+            Asbecker Straße 32, 48720 Rosendahl
+          </div>
+          <div class="card-tag">.</div>
+        </div>
+      </div>
+
+      <div class="card card-back">
+        <div class="card-back-label">— Tagline</div>
+        <div class="card-back-tag">Zuhause<br>ist unsere<br><em>Leidenschaft.</em></div>
+        <div class="card-back-est">Familienunternehmen · seit 1990</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BRIEFKOPF -->
+  <div class="asset-group">
+    <div class="asset-label">02 — Geschäftsbrief · DIN A4</div>
+    <div class="row">
+
+      <div class="letterhead">
+        <div class="lh-top">
+          <div class="lh-logo">
+            <img src="https://cdn.prod.website-files.com/63be7bd04823666354300253/640b40a844ffd080d882c3c4_Logo_Haus_%23ccb787.png" alt="">
+            <div>
+              <div class="lh-brand-name">Schüer</div>
+              <div class="lh-brand-sub">Immobilien</div>
+            </div>
+          </div>
+          <div class="lh-meta">
+            <strong>Schüer Immobilien</strong><br>
+            Asbecker Straße 32 · 48720 Rosendahl<br>
+            02547 · 1637 · info@schueer-immobilien.de
+          </div>
+        </div>
+
+        <div class="lh-recipient">
+          Frau<br>
+          Anna Beispiel<br>
+          Musterstraße 7<br>
+          48143 Münster
+        </div>
+
+        <div class="lh-date">Rosendahl, den 24. Mai 2026</div>
+
+        <h2 class="lh-subject">Ihr Mietvertrag — <em>Willkommen</em> bei Schüer Immobilien.</h2>
+
+        <div class="lh-body">
+          <p>Sehr geehrte Frau Beispiel,</p>
+          <p>wir freuen uns sehr, dass wir Sie als Mieterin in unserem Haus begrüßen dürfen. Im Anhang finden Sie Ihren unterzeichneten Mietvertrag sowie das Übergabeprotokoll, das wir gemeinsam vor Ort durchgehen werden.</p>
+          <p>Bei Fragen erreichen Sie uns direkt unter <strong>02547 · 1637</strong> — keine Hotline, keine Tickets. Wir sind persönlich für Sie da.</p>
+          <p>Herzlich willkommen in Ihrem neuen Zuhause.</p>
+          <div class="lh-sign">Andreas Schüer</div>
+        </div>
+
+        <div class="lh-foot">
+          <span>Schüer Immobilien · Rosendahl</span>
+          <span>Seite 1 / 1</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INSTAGRAM STORIES -->
+  <div class="asset-group">
+    <div class="asset-label">03 — Instagram-Stories · 1080 × 1920 · 3 Templates</div>
+    <div class="row">
+
+      <div class="story story-1">
+        <div class="story-top-label">— Zitat — Karl &amp; Andreas Schüer</div>
+        <div class="story-quote">Wir schaffen nicht nur Wohnraum, sondern <em>ein echtes Zuhause.</em></div>
+        <div class="story-foot">
+          <img src="https://cdn.prod.website-files.com/63be7bd04823666354300253/640b40a844ffd080d882c3c4_Logo_Haus_%23ccb787.png" alt="">
+          <div class="story-foot-text">Schüer<small>Immobilien</small></div>
+        </div>
+      </div>
+
+      <div class="story story-2">
+        <div class="story-2-top">
+          <div class="story-2-logo">
+            <img src="https://cdn.prod.website-files.com/63be7bd04823666354300253/640b40a844ffd080d882c3c4_Logo_Haus_%23ccb787.png" alt="">
+            <div>
+              <div class="story-2-logo-name">Schüer</div>
+              <div class="story-2-logo-sub">Immobilien</div>
+            </div>
+          </div>
+          <div class="story-2-tag">— Anno MCMXC</div>
+        </div>
+        <div class="story-2-text">Zuhause<br>ist unsere<br><em>Leidenschaft.</em></div>
+        <div class="story-2-cta">
+          <span>Mehr erfahren</span>
+          <span class="story-2-cta-arrow">↗</span>
+        </div>
+      </div>
+
+      <div class="story story-3">
+        <div class="story-3-cap">— Fakten</div>
+        <div>
+          <div class="story-3-num"><em>25</em>+</div>
+          <div class="story-3-label" style="margin-top: 18px;">Mitarbeiter im<br><em>Familienunternehmen.</em></div>
+        </div>
+        <div class="story-3-foot">
+          <span>Seit 1990</span>
+          <span>Rosendahl · Münster</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top: 40px; font-size: 12px; color: #6b6478; letter-spacing: 0.2em; text-transform: uppercase;">
+    Alle Assets in derselben Typo (DM Serif Display + Raleway) und CI-Farben (#ccb787 · #171228).
+  </p>
+</div>
+
+</body>
+</html>

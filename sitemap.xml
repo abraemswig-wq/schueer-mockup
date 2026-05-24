@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://abraemswig-wq.github.io/schueer-mockup/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://cdn.prod.website-files.com/63be7bd04823666354300253/6447dc21591a3a21ed9b7805_Familienunternehmen_Schu%CC%88er_Immobilien.jpg</image:loc>
+      <image:title>Familie Schüer</image:title>
+      <image:caption>Drei Generationen Familienunternehmen für Immobilien in Münster und Coesfeld</image:caption>
+    </image:image>
+  </url>
+</urlset>
