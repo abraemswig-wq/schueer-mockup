@@ -803,20 +803,17 @@
   }
   .intro-bg {
     position: absolute;
-    inset: -8%;
+    inset: -10%;
     background-size: cover;
     background-position: center;
-    filter: blur(14px) brightness(0.7) saturate(1.05);
-    transform: scale(1.1);
+    filter: blur(36px) brightness(0.45) saturate(0.85);
+    transform: scale(1.15);
     z-index: 0;
   }
   .intro-bg::after {
     content: '';
     position: absolute; inset: 0;
-    /* Top + Bottom Vignette für Text-Lesbarkeit, Mitte bleibt offen */
-    background:
-      linear-gradient(180deg, rgba(23,18,40,0.55) 0%, rgba(23,18,40,0.15) 35%, rgba(23,18,40,0.15) 65%, rgba(23,18,40,0.55) 100%),
-      radial-gradient(ellipse at center, transparent 30%, rgba(23,18,40,0.25) 100%);
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(23,18,40,0.4) 50%, rgba(23,18,40,0.85) 100%);
   }
 
   .intro-title-block {
