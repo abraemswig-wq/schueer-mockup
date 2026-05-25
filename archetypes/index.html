@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Schüer Immobilien — 4 Design-Archetypen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;900&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f;
+    --surface: #15151d;
+    --surface-2: #1d1d27;
+    --text: #e8e8ec;
+    --muted: #8a8a98;
+    --accent: #ccb787;
+    --border: #25252f;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    padding: 80px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    text-align: center;
+  }
+  .header .eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .header .eyebrow::before,
+  .header .eyebrow::after {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .header h1 em { font-style: italic; color: var(--accent); }
+  .header p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  @media (max-width: 880px) {
+    .grid { grid-template-columns: 1fr; }
+    body { padding: 50px 20px; }
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .stage {
+    aspect-ratio: 16 / 11;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+  .meta {
+    padding: 28px 32px 32px;
+    border-top: 1px solid var(--border);
+  }
+  .meta .num {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .meta .num .tags { color: var(--muted); font-weight: 400; letter-spacing: 0.15em; }
+  .meta h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .meta h2 em { font-style: italic; color: var(--accent); }
+  .meta .search {
+    color: var(--muted);
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+  .meta .note {
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .meta .fit {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  /* ─────────────────────────────────────
+     1. EDITORIAL MONOGRAPH (current Schüer)
+     ───────────────────────────────────── */
+  .stage-monograph {
+    background: #f3ecdc;
+    padding: 18px 22px;
+    color: #171228;
+    font-family: 'Raleway', sans-serif;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .stage-monograph::before {
+    content: '';
+    position: absolute; inset: 0;
+    opacity: 0.5; mix-blend-mode: multiply; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0 0.16 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .mono-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 8px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: #6b6478; padding-bottom: 10px; border-bottom: 1px solid rgba(23,18,40,0.15);
+    margin-bottom: 14px; position: relative; z-index: 1;
+  }
+  .mono-logo { font-family: 'DM Serif Display', serif; font-size: 16px; color: #171228; letter-spacing: -0.01em; }
+  .mono-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; flex: 1; position: relative; z-index: 1; }
+  .mono-h {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    line-height: 0.94;
+    letter-spacing: -0.03em;
+  }
+  .mono-h em { font-style: italic; color: #a8895a; }
+  .mono-img {
+    background: linear-gradient(180deg, rgba(23,18,40,0) 50%, rgba(23,18,40,0.4)), url('https://cdn.prod.website-files.com/63be7bd04823666354300253/6447dc21591a3a21ed9b7805_Familienunternehmen_Schu%CC%88er_Immobilien.jpg') center/cover;
+    border-radius: 2px;
+    aspect-ratio: 4/5;
+    align-self: end;
+  }
+
+  /* ─────────────────────────────────────
+     2. BRUTALIST ARCHITECTURAL
+     ───────────────────────────────────── */
+  .stage-brutalist {
+    background: #ededed;
+    padding: 0;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    flex-direction: column;
+  }
+  .brut-top { background: #000; color: #fff; padding: 10px 22px; display: flex; justify-content: space-between; align-items: center; }
+  .brut-top-name { font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: -0.02em; }
+  .brut-top-nav { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #ff5733; }
+  .brut-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+  .brut-left { padding: 24px 22px; display: flex; flex-direction: column; justify-content: space-between; background: #ededed; }
+  .brut-num { font-family: 'Archivo Black', sans-serif; font-size: 100px; line-height: 0.85; color: #000; letter-spacing: -0.05em; }
+  .brut-meta { font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase; color: #000; border-top: 2px solid #000; padding-top: 8px; }
+  .brut-meta strong { color: #ff5733; font-weight: 700; }
+  .brut-right {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.5)),
+      url('https://cdn.prod.website-files.com/63be7bd04823666354300253/643fc504284956148a5125e9_Cuttedpicture.png') center/cover;
+    position: relative;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+  }
+  .brut-right-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 24px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+  .brut-right-tag { font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: #ff5733; margin-bottom: 6px; }
+
+  /* ─────────────────────────────────────
+     3. LUXURY DARK
+     ───────────────────────────────────── */
+  .stage-luxury {
+    background: #0e0e0e;
+    padding: 18px 24px;
+    color: #f5f5f5;
+    font-family: 'Cormorant Garamond', serif;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .stage-luxury::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(212, 175, 55, 0.08), transparent 60%),
+      url('https://cdn.prod.website-files.com/63be7bd04823666354300253/642d30d04eda5e159206b58e_DSC07868.jpg') center/cover;
+    opacity: 0.35;
+    filter: grayscale(0.6) brightness(0.6);
+  }
+  .lux-bar {
+    position: relative; z-index: 2;
+    align-self: stretch;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 8px; letter-spacing: 0.35em; text-transform: uppercase; color: #d4af37;
+    padding-bottom: 14px;
+    margin-bottom: 0;
+  }
+  .lux-content { position: relative; z-index: 2; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .lux-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px; letter-spacing: 0.45em; text-transform: uppercase; color: #d4af37; font-weight: 500;
+  }
+  .lux-h {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(28px, 5vw, 50px);
+    line-height: 1.05;
+    color: #f5f5f5;
+    letter-spacing: -0.005em;
+  }
+  .lux-h .gold { color: #d4af37; }
+  .lux-rule {
+    width: 36px; height: 1px; background: #d4af37; margin: 4px auto;
+  }
+  .lux-foot {
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5px; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(245,245,245,0.5);
+  }
+
+  /* ─────────────────────────────────────
+     4. SWISS GRID
+     ───────────────────────────────────── */
+  .stage-swiss {
+    background: #fff;
+    padding: 0;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    flex-direction: column;
+  }
+  .swiss-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 18px; border-bottom: 1px solid #000;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px; letter-spacing: 0.04em;
+  }
+  .swiss-bar strong { font-weight: 600; }
+  .swiss-body { flex: 1; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr auto; gap: 0; padding: 14px 18px; }
+  .swiss-h {
+    grid-column: 1 / 9;
+    grid-row: 1;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 3.5vw, 34px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+  .swiss-h em { font-style: normal; color: #888; font-weight: 400; }
+  .swiss-data {
+    grid-column: 9 / 13;
+    grid-row: 1 / 3;
+    border-left: 1px solid #000;
+    padding-left: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    line-height: 1.6;
+  }
+  .swiss-data div { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px dashed #ccc; }
+  .swiss-data div:last-child { border-bottom: none; }
+  .swiss-data strong { font-weight: 600; }
+  .swiss-meta {
+    grid-column: 1 / 9;
+    grid-row: 2;
+    align-self: end;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    border-top: 1px solid #000;
+    padding-top: 10px;
+  }
+  .swiss-meta div { display: flex; flex-direction: column; gap: 2px; }
+  .swiss-meta .label { color: #888; font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .swiss-meta .val { font-weight: 600; }
+  .swiss-foot {
+    grid-column: 1 / 13;
+    grid-row: 3;
+    display: flex; justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8px; color: #888;
+    border-top: 1px solid #000;
+    margin-top: 12px;
+    padding-top: 6px;
+    letter-spacing: 0.05em;
+  }
+  .swiss-foot .red { color: #c00; }
+
+  /* ─────────────────────────────────────
+     PAGE FOOTER
+     ───────────────────────────────────── */
+  .page-foot {
+    max-width: 1400px;
+    margin: 80px auto 0;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .page-foot a { color: var(--accent); text-decoration: none; }
+  .page-foot a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">Moodboard · Schüer Immobilien</div>
+  <h1>Vier Richtungen.<br>Ein <em>Familienunternehmen.</em></h1>
+  <p>
+    Vier komplett verschiedene Design-Archetypen für die Schüer-Webseite — alle mit identischer Story
+    (Familienunternehmen, 2. Generation, Münster &amp; Coesfeld), aber radikal unterschiedlicher visueller Sprache.
+    Wählen Sie die Richtung, die zu Ihrem Selbstverständnis passt.
+  </p>
+</div>
+
+<div class="grid">
+
+  <!-- 01. EDITORIAL MONOGRAPH -->
+  <div class="card">
+    <div class="stage stage-monograph">
+      <div class="mono-bar">
+        <div class="mono-logo">Schüer<span style="color:#a8895a">.</span></div>
+        <div>Leistungen · Chronik · Kontakt</div>
+      </div>
+      <div class="mono-grid">
+        <div>
+          <div class="mono-h">Zuhause<br>ist unsere<br><em>Leidenschaft.</em></div>
+        </div>
+        <div class="mono-img"></div>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="num"><span>01 / IV — Aktueller Mockup</span><span class="tags">Editorial · Warm · Familiär</span></div>
+      <h2>Editorial <em>Monograph</em></h2>
+      <div class="search">DM Serif Display · Raleway · #ccb787 · #171228</div>
+      <p class="note">
+        Wie ein hochwertiges Familien-Architekturbuch. Beige Papier-Textur, große Kursiv-Akzente, ruhige Editorial-Layouts mit Kapitel-Nummerierung. Restrained, persönlich, würdevoll.
+      </p>
+      <div class="fit">→ Für inhabergeführte Familien-Tradition</div>
+    </div>
+  </div>
+
+  <!-- 02. BRUTALIST ARCHITECTURAL -->
+  <div class="card">
+    <div class="stage stage-brutalist">
+      <div class="brut-top">
+        <div class="brut-top-name">SCHÜER®</div>
+        <div class="brut-top-nav">PLAN · BUILD · MANAGE</div>
+      </div>
+      <div class="brut-body">
+        <div class="brut-left">
+          <div class="brut-num">01</div>
+          <div class="brut-meta">PROJEKT-Nº 1990 / <strong>MÜNSTER—WEST</strong></div>
+        </div>
+        <div class="brut-right">
+          <div class="brut-right-tag">— BUILT BY SCHÜER</div>
+          <div class="brut-right-title">CONCRETE.<br>STEEL.<br>WOOD.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="num"><span>02 / IV — Bold Alternative</span><span class="tags">Brutalist · Raw · Architektur</span></div>
+      <h2>Brutalist <em>Architectural</em></h2>
+      <div class="search">Archivo Black · Inter · #000 · #ededed · #ff5733</div>
+      <p class="note">
+        Massive Slab-Typografie, sharp Grids, keine Rundungen. Stein, Stahl, Beton als visuelle Sprache. Bauplan-Ästhetik, oversized Numerals, monumentale Headlines. Für Projektentwickler die ihre Bauten als Statement zeigen wollen.
+      </p>
+      <div class="fit">→ Für architektonisch ambitionierte Projektentwicklung</div>
+    </div>
+  </div>
+
+  <!-- 03. LUXURY DARK -->
+  <div class="card">
+    <div class="stage stage-luxury">
+      <div class="lux-bar">
+        <span>Schüer</span>
+        <span>—  Anno MCMXC  —</span>
+        <span>Collection</span>
+      </div>
+      <div class="lux-content">
+        <div class="lux-eyebrow">An Exclusive Collection</div>
+        <div class="lux-h">A residence<br><span class="gold">unlike</span> any other.</div>
+        <div class="lux-rule"></div>
+        <div class="lux-foot">Münster &middot; By Appointment</div>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="num"><span>03 / IV — Premium-Segment</span><span class="tags">Luxury · Dark · Gold</span></div>
+      <h2>Luxury <em>Dark</em></h2>
+      <div class="search">Cormorant Garamond · Inter · #0e0e0e · #d4af37</div>
+      <p class="note">
+        Sotheby's-, Knight-Frank-Stil. Dark Mode mit Champagner-Gold-Akzent. Sparse Text, dramatische Imagery, alles atmet Exklusivität. „By Appointment Only"-Gefühl. Für High-End-Bestände und Investment-Klientel.
+      </p>
+      <div class="fit">→ Für Premium-Wohnungen ab 1M+ und Investment-Käufer</div>
+    </div>
+  </div>
+
+  <!-- 04. SWISS GRID -->
+  <div class="card">
+    <div class="stage stage-swiss">
+      <div class="swiss-bar">
+        <strong>SCHÜER IMMOBILIEN — EST. 1990</strong>
+        <span>ROSENDAHL / DE — 48720</span>
+      </div>
+      <div class="swiss-body">
+        <div class="swiss-h">Verwaltung <em>im Kreis Coesfeld &amp; Münster</em></div>
+        <div class="swiss-data">
+          <div><span>EINHEITEN</span><strong>1.247</strong></div>
+          <div><span>STANDORTE</span><strong>14</strong></div>
+          <div><span>TEAM</span><strong>25</strong></div>
+          <div><span>JAHRE</span><strong>36</strong></div>
+          <div><span>STAND</span><strong>05/26</strong></div>
+        </div>
+        <div class="swiss-meta">
+          <div><span class="label">→ Planung</span><span class="val">10 Projekte</span></div>
+          <div><span class="label">→ Vermietung</span><span class="val">98% Quote</span></div>
+          <div><span class="label">→ Verwaltung</span><span class="val">24h Ø Resp.</span></div>
+        </div>
+        <div class="swiss-foot">
+          <span>EX 01 / SECT A.1 / SCHÜER—DE</span>
+          <span class="red">● LIVE</span>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="num"><span>04 / IV — Data-Forward</span><span class="tags">Swiss · Rational · Technisch</span></div>
+      <h2>Swiss <em>Grid</em></h2>
+      <div class="search">Inter · IBM Plex Mono · #fff · #000 · #c00</div>
+      <p class="note">
+        12-Spalten-Grid, monospace-Metadaten, dichte Information. Wie ein Spec-Sheet oder Aktien-Dashboard. Keine Pathos, alles Fakten. Stadtteil-Stats, Energie-Werte, Reaktionszeiten — transparent und nachprüfbar. Für daten-getriebene Käufer und institutionelle Mandate.
+      </p>
+      <div class="fit">→ Für Investoren, Sparkassen, datenaffine Käufer</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-foot">
+  <div>© MMXXVI · Moodboard für Schüer Immobilien</div>
+  <div>
+    <a href="../">← Zurück zur Hauptseite (Variante 01)</a>
+  </div>
+</div>
+
+</body>
+</html>
