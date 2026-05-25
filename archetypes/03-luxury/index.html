@@ -9,14 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0a0a0a;
-    --ink-2: #161616;
-    --ink-3: #1f1f1f;
-    --text: #ebe7df;
-    --text-soft: rgba(235, 231, 223, 0.6);
-    --gold: #d4af37;
-    --gold-deep: #b8932c;
-    --gold-soft: rgba(212, 175, 55, 0.18);
+    --ink: #171228;
+    --ink-2: #1f1a35;
+    --ink-3: #2a2240;
+    --text: #f3ecdc;
+    --text-soft: rgba(243, 236, 220, 0.6);
+    --gold: #ccb787;
+    --gold-deep: #a8895a;
+    --gold-soft: rgba(204, 183, 135, 0.22);
     --max: 1280px;
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -71,7 +71,7 @@
   header {
     position: fixed; inset: 0 0 auto 0; z-index: 100;
     padding: 24px 40px;
-    background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(10,10,10,0.7));
+    background: linear-gradient(180deg, rgba(23,18,40,0.95), rgba(23,18,40,0.7));
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--gold-soft);
   }
@@ -134,10 +134,10 @@
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
     background:
-      radial-gradient(ellipse at center, rgba(212,175,55,0.08), transparent 60%),
-      linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.85) 100%),
+      radial-gradient(ellipse at center, rgba(204,183,135,0.1), transparent 60%),
+      linear-gradient(180deg, rgba(23,18,40,0.4) 0%, rgba(23,18,40,0.88) 100%),
       url('https://cdn.prod.website-files.com/63be7bd04823666354300253/642d30d04eda5e159206b58e_DSC07868.jpg') center/cover;
-    filter: grayscale(0.25) saturate(0.85) brightness(0.6) sepia(0.12);
+    filter: grayscale(0.3) saturate(0.8) brightness(0.65) sepia(0.18);
   }
   .hero-inner {
     position: relative;
@@ -309,9 +309,9 @@
   .portrait-img {
     aspect-ratio: 4/5;
     background:
-      linear-gradient(180deg, rgba(10,10,10,0.05) 0%, rgba(10,10,10,0.4) 100%),
+      linear-gradient(180deg, rgba(23,18,40,0.08) 0%, rgba(23,18,40,0.45) 100%),
       url('https://cdn.prod.website-files.com/63be7bd04823666354300253/643fc2008d5a6af7b9d26f2e_DSC07083.jpg') center/cover;
-    filter: grayscale(0.4) sepia(0.15);
+    filter: grayscale(0.35) sepia(0.2);
     border: 1px solid var(--gold-soft);
   }
   .portrait-text .eyebrow { margin-bottom: 28px; }
@@ -453,11 +453,11 @@
   <nav class="nav">
     <a href="#" class="nav-brand">Schüer<span class="dot">.</span></a>
     <div class="nav-links">
-      <a href="#collection">Collection</a>
-      <a href="#portrait">Family</a>
-      <a href="#kontakt">Contact</a>
+      <a href="#collection">Disziplinen</a>
+      <a href="#portrait">Familie</a>
+      <a href="#kontakt">Kontakt</a>
     </div>
-    <a href="#kontakt" class="nav-cta">By Appointment</a>
+    <a href="#kontakt" class="nav-cta">Auf Termin</a>
   </nav>
 </header>
 
@@ -465,13 +465,13 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow eyebrow">An Exclusive Collection — Münster · MMXXVI</div>
-    <h1 class="hero-h1">A residence<br><em>unlike</em><br>any other.</h1>
+    <div class="hero-eyebrow eyebrow">Eine exklusive Auswahl — Münster · MMXXVI</div>
+    <h1 class="hero-h1">Ein Zuhause,<br>das seines­<em>gleichen</em><br>sucht.</h1>
     <div class="hero-rule"></div>
     <p class="hero-lead">
-      Family-led property since 1990. Crafted, managed and curated for those who treasure permanence.
+      Familiengeführtes Immobilien­unternehmen seit 1990. Gebaut, verwaltet und kuratiert für jene, die Beständigkeit zu schätzen wissen.
     </p>
-    <a href="#kontakt" class="hero-cta">Inquire — By Appointment</a>
+    <a href="#kontakt" class="hero-cta">Anfragen — Auf Termin</a>
   </div>
   <div class="hero-meta">
     <span>— Anno MCMXC</span>
@@ -484,32 +484,32 @@
 <section class="collection" id="collection">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">The Collection</div>
-      <h2>Three disciplines.<br><em>One signature.</em></h2>
-      <p class="lead">From the first plan to the final key — every detail attended to by the family itself, never outsourced.</p>
+      <div class="eyebrow">Die Disziplinen</div>
+      <h2>Drei Disziplinen.<br><em>Eine Handschrift.</em></h2>
+      <p class="lead">Vom ersten Plan bis zum letzten Schlüssel — jedes Detail von der Familie selbst betreut, nichts ausgelagert.</p>
     </div>
 
     <div class="collection-grid">
       <a href="#" class="coll-card">
         <div class="coll-num"><em>i</em></div>
-        <div class="coll-tag">— Architecture</div>
+        <div class="coll-tag">— Planung</div>
         <div class="coll-title">Eigene <em>Projekt­entwicklung.</em></div>
-        <div class="coll-desc">Konzept, Plan und Realisierung im eigenen Haus. Materialien gewählt für ihre Würde, nicht ihren Preis.</div>
-        <span class="coll-link">Erfahren <span class="arrow">→</span></span>
+        <div class="coll-desc">Konzept, Plan und Realisierung im eigenen Haus. Materialien, gewählt für ihre Würde — nicht für ihren Preis.</div>
+        <span class="coll-link">Mehr erfahren <span class="arrow">→</span></span>
       </a>
       <a href="#" class="coll-card">
         <div class="coll-num"><em>ii</em></div>
-        <div class="coll-tag">— Tenancy</div>
-        <div class="coll-title">Curated <em>Vermietung.</em></div>
-        <div class="coll-desc">Modernisierte Bestände. Persönliche Auswahl. Schlüsselübergabe als Ritual, nicht als Termin.</div>
-        <span class="coll-link">Erfahren <span class="arrow">→</span></span>
+        <div class="coll-tag">— Vermietung</div>
+        <div class="coll-title">Kuratierte <em>Vermietung.</em></div>
+        <div class="coll-desc">Modernisierte Bestände. Persönliche Auswahl. Schlüssel­übergabe als Ritual — nicht als Termin.</div>
+        <span class="coll-link">Mehr erfahren <span class="arrow">→</span></span>
       </a>
       <a href="#" class="coll-card">
         <div class="coll-num"><em>iii</em></div>
-        <div class="coll-tag">— Stewardship</div>
+        <div class="coll-tag">— Verwaltung</div>
         <div class="coll-title">Anhaltende <em>Verwaltung.</em></div>
-        <div class="coll-desc">Werterhaltung über Generationen. Keine Hotline, kein Ticket — ein direkter Ansprechpartner für jedes Anliegen.</div>
-        <span class="coll-link">Erfahren <span class="arrow">→</span></span>
+        <div class="coll-desc">Werterhaltung über Generationen. Keine Hotline, kein Ticket — ein direkter Ansprech­partner für jedes Anliegen.</div>
+        <span class="coll-link">Mehr erfahren <span class="arrow">→</span></span>
       </a>
     </div>
   </div>
@@ -521,7 +521,7 @@
     <div class="portrait-grid">
       <div class="portrait-img"></div>
       <div class="portrait-text">
-        <div class="eyebrow">The Family</div>
+        <div class="eyebrow">Die Familie</div>
         <h3>Karl &amp; Andreas Schüer.<br><em>Zweite Generation.</em></h3>
         <p>Den Grundstein legte Karl Schüer Anfang der 90er Jahre — mit dem Weitblick, dass aus Bauen mehr werden kann als Stein und Mörtel.</p>
         <p>Heute steht die zweite Generation an der Spitze. Andreas, Silke und Andrea Schüer führen das Familienunternehmen mit denselben Werten: Verlässlichkeit, Bodenständigkeit, Werterhaltung.</p>
@@ -539,7 +539,7 @@
   <div class="wrap">
     <div class="pull-mark">"</div>
     <div class="pull-text">
-      We craft not just dwellings, but <em>true homes.</em><br>Behind this mission stands the entire family — already in the <em>second generation.</em>
+      Wir schaffen nicht nur Wohnraum, sondern <em>ein echtes Zuhause.</em><br>Hinter dieser Mission steht die ganze Familie — und das bereits in der <em>zweiten Generation.</em>
     </div>
     <div class="pull-author">— Karl &amp; Andreas Schüer</div>
   </div>
@@ -548,26 +548,26 @@
 <!-- CONTACT -->
 <section class="contact" id="kontakt">
   <div class="wrap">
-    <div class="eyebrow" style="margin-bottom: 24px;">By Appointment</div>
-    <h2>An invitation,<br><em>privately extended.</em></h2>
+    <div class="eyebrow" style="margin-bottom: 24px;">Auf Termin</div>
+    <h2>Eine Einladung,<br><em>persönlich ausgesprochen.</em></h2>
     <p class="lead">Sprechen Sie uns persönlich an. Wir nehmen uns die Zeit, die Ihr Anliegen verdient.</p>
 
     <div class="contact-grid">
       <div class="contact-item">
-        <div class="contact-label">Telephone</div>
+        <div class="contact-label">Telefon</div>
         <div class="contact-value"><a href="tel:+4925471637">02547 · 1637</a></div>
       </div>
       <div class="contact-item">
-        <div class="contact-label">Correspondence</div>
+        <div class="contact-label">Post</div>
         <div class="contact-value"><a href="mailto:info@schueer-immobilien.de">info@<br>schueer-immobilien.de</a></div>
       </div>
       <div class="contact-item">
-        <div class="contact-label">Residence</div>
+        <div class="contact-label">Sitz</div>
         <div class="contact-value">Asbecker Straße 32<br>48720 Rosendahl</div>
       </div>
     </div>
 
-    <a href="tel:+4925471637" class="hero-cta">Request an Appointment</a>
+    <a href="tel:+4925471637" class="hero-cta">Termin vereinbaren</a>
   </div>
 </section>
 
