@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schüer Immobilien — Variante 02 · Brutalist Architectural</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #171228;
+    --ink-2: #2a2240;
+    --paper: #f3ecdc;
+    --paper-2: #ebe1c9;
+    --paper-3: #ddd0b1;
+    --brand: #ccb787;
+    --brand-deep: #a8895a;
+    --max: 1440px;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--paper-2);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--ink); color: var(--brand); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    border-bottom: 2px solid var(--paper);
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--paper);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-brand em { font-style: italic; color: var(--brand); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--brand); }
+  .nav-cta {
+    background: var(--brand);
+    color: var(--ink);
+    padding: 10px 18px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--paper); }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--brand); text-decoration: none;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 12px; border: 1px solid var(--brand);
+    font-family: 'Archivo Black', sans-serif;
+  }
+  .back-link:hover { background: var(--brand); color: var(--ink); }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding-top: 70px;
+    background: var(--ink);
+    color: var(--paper);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-left {
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 2px solid var(--paper);
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+  .hero-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(180px, 28vw, 400px);
+    line-height: 0.78;
+    letter-spacing: -0.06em;
+    color: var(--paper);
+  }
+  .hero-num em { color: var(--brand); font-style: italic; }
+  .hero-foot {
+    border-top: 2px solid var(--paper);
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .hero-foot-item {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .hero-foot-item span { color: var(--brand); display: block; margin-bottom: 4px; }
+  .hero-right {
+    background:
+      linear-gradient(180deg, rgba(23,18,40,0.15) 0%, rgba(23,18,40,0.6) 70%, rgba(23,18,40,0.85) 100%),
+      url('https://cdn.prod.website-files.com/63be7bd04823666354300253/6447dc21591a3a21ed9b7805_Familienunternehmen_Schu%CC%88er_Immobilien.jpg') center/cover;
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: var(--paper);
+    position: relative;
+  }
+  .hero-right-tag {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brand);
+    margin-bottom: 16px;
+  }
+  .hero-right-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(36px, 5vw, 72px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-right-title span { display: block; color: var(--brand); }
+  .hero-right-desc {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--paper);
+    max-width: 420px;
+  }
+
+  /* ─── SERVICES (Brutalist Cards) ─── */
+  section { padding: 100px 0; }
+  .sec-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+    align-items: end;
+  }
+  .sec-eyebrow {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--brand-deep);
+  }
+  .sec-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 100px;
+    line-height: 0.85;
+    color: var(--ink);
+    letter-spacing: -0.05em;
+  }
+  h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(40px, 6vw, 96px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--brand-deep); }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+  .svc {
+    padding: 40px 32px 48px;
+    border-right: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--paper-2);
+    transition: background 0.3s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .svc:last-child { border-right: none; }
+  .svc:hover { background: var(--ink); color: var(--paper); }
+  .svc:hover .svc-num { color: var(--brand); }
+  .svc:hover .svc-tag, .svc:hover .svc-desc { color: var(--paper); }
+  .svc-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 72px;
+    line-height: 0.85;
+    color: var(--brand-deep);
+    letter-spacing: -0.04em;
+  }
+  .svc-tag {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brand-deep);
+  }
+  .svc-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(24px, 2vw, 32px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .svc-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid currentColor;
+  }
+
+  /* ─── FACTS (Massive Numbers) ─── */
+  .facts {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--paper);
+    border-bottom: 2px solid var(--paper);
+  }
+  .fact {
+    padding: 48px 32px;
+    border-right: 2px solid var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .fact:last-child { border-right: none; }
+  .fact-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(72px, 8vw, 140px);
+    line-height: 0.78;
+    letter-spacing: -0.05em;
+  }
+  .fact-num em { color: var(--brand); font-style: italic; }
+  .fact-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--brand);
+    padding-top: 12px;
+    border-top: 2px solid var(--paper);
+  }
+
+  /* ─── ABOUT / FAMILY ─── */
+  .about {
+    background: var(--paper-2);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    border: 2px solid var(--ink);
+  }
+  .about-text {
+    padding: 60px 48px;
+    border-right: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .about-text h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(28px, 3.5vw, 52px);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+  }
+  .about-text p {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .about-text .quote {
+    font-size: 22px;
+    border-left: 4px solid var(--brand);
+    padding-left: 20px;
+  }
+  .about-text .quote-author {
+    font-style: normal;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--brand-deep);
+    margin-top: 16px;
+  }
+  .about-img {
+    background: url('https://cdn.prod.website-files.com/63be7bd04823666354300253/643fc2008d5a6af7b9d26f2e_DSC07083.jpg') center/cover;
+    min-height: 500px;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 2px solid var(--paper);
+  }
+  .contact-left { padding: 80px 48px; border-right: 2px solid var(--paper); }
+  .contact-h {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(48px, 6vw, 100px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+  }
+  .contact-h em { color: var(--brand); font-style: italic; }
+  .contact-lead {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--paper);
+    opacity: 0.85;
+    max-width: 460px;
+    line-height: 1.5;
+  }
+  .contact-right {
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+  .contact-row { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(243,236,220,0.18); }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+  .contact-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  .contact-value a { color: var(--paper); text-decoration: none; }
+  .contact-value a:hover { color: var(--brand); }
+
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    border-top: 2px solid var(--paper);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--brand); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-grid, .services, .facts-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero-left, .svc, .fact, .about-text, .contact-left { border-right: none; border-bottom: 2px solid var(--ink); }
+    .facts .fact { border-bottom-color: var(--paper); }
+    .contact-left { border-bottom-color: var(--paper); }
+    .hero-left { padding: 40px 28px; }
+    .hero-right { padding: 40px 28px; }
+    .sec-head { grid-template-columns: 1fr; gap: 24px; }
+    section { padding: 60px 0; }
+    .about-img { min-height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#" class="nav-brand">Schüer<em>.</em></a>
+    <nav class="nav-links">
+      <a href="#leistungen">PLAN</a>
+      <a href="#leistungen">BUILD</a>
+      <a href="#leistungen">MANAGE</a>
+      <a href="#about">FAMILIE</a>
+    </nav>
+    <a href="#kontakt" class="nav-cta">KONTAKT →</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-meta">
+        <span>SCHÜER®</span>
+        <span>PROJEKT-Nº MMXXVI · 01</span>
+      </div>
+      <div class="hero-num"><em>01</em></div>
+      <div class="hero-foot">
+        <div class="hero-foot-item"><span>EST.</span>MCMXC</div>
+        <div class="hero-foot-item"><span>BUILT</span>1.247×</div>
+        <div class="hero-foot-item"><span>CREW</span>25</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-tag">— BUILT BY SCHÜER · MÜNSTER</div>
+      <div class="hero-right-title">Stein.<br>Hand.<br><span>Wort.</span></div>
+      <div class="hero-right-desc">Drei Generationen bauen, vermieten und verwalten Immobilien im Kreis Coesfeld und Münster. Kein Outsourcing. Kein Callcenter. Nur Schüer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">— Section A</div>
+        <div class="sec-num">02</div>
+      </div>
+      <h2>Plan.<br>Build. <em>Manage.</em></h2>
+    </div>
+
+    <div class="services">
+      <a href="#" class="svc">
+        <div class="svc-num">01</div>
+        <div class="svc-tag">PLAN</div>
+        <div class="svc-title">Projekt­entwicklung</div>
+        <div class="svc-desc">Eigene Projektentwicklung mit Bauexperten aus der Region. Hochwertig. Zeitgemäß. Nachhaltig.</div>
+      </a>
+      <a href="#" class="svc">
+        <div class="svc-num">02</div>
+        <div class="svc-tag">BUILD</div>
+        <div class="svc-title">Bau &amp; Vermietung</div>
+        <div class="svc-desc">Modernisierte Objekte. Direkter Ansprechpartner. Selbstauskunft, Besichtigung, Übergabe.</div>
+      </a>
+      <a href="#" class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-tag">MANAGE</div>
+        <div class="svc-title">Hausverwaltung</div>
+        <div class="svc-desc">Nebenkostenabrechnung. Technische Betreuung. Wohnungsübergaben. Keine Hotline.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="facts">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow" style="color: var(--brand);">— Section B</div>
+        <div class="sec-num" style="color: var(--paper);">03</div>
+      </div>
+      <h2 style="color: var(--paper);">Built<br>by <em>numbers.</em></h2>
+    </div>
+  </div>
+
+  <div class="facts-grid">
+    <div class="fact">
+      <div class="fact-num"><em>36</em></div>
+      <div class="fact-label">JAHRE / SEIT MCMXC</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num"><em>25</em>+</div>
+      <div class="fact-label">CREW / MITARBEITER</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num"><em>1247</em></div>
+      <div class="fact-label">UNITS / BAUEINHEITEN</div>
+    </div>
+    <div class="fact">
+      <div class="fact-num"><em>II.</em></div>
+      <div class="fact-label">GENERATION / FAMILIE</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">— Section C</div>
+        <div class="sec-num">04</div>
+      </div>
+      <h2>Karl &amp;<br>Andreas <em>Schüer.</em></h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>Familienunternehmen<br>seit 1990.</h3>
+        <p>Karl Schüer baute Anfang der 90er sein erstes Mehrfamilienhaus. Andreas folgte Mitte der 90er. Heute steht die zweite Generation an der Spitze — bodenständig, persönlich, mit klaren Werten.</p>
+        <p class="quote">
+          „Wir schaffen nicht nur Wohnraum, sondern <em style="color:var(--brand-deep)">ein echtes Zuhause.</em>"
+          <span class="quote-author">— Karl &amp; Andreas Schüer · Geschäftsführung</span>
+        </p>
+      </div>
+      <div class="about-img"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="sec-eyebrow" style="color: var(--brand);">— Section D · Kontakt</div>
+      <div style="margin-top: 24px;"></div>
+      <div class="contact-h">Geben Sie uns<br><em>Grund zu bauen.</em></div>
+      <div class="contact-lead">30 Minuten Erstgespräch. Persönlich. Kostenfrei. Ohne Verkaufsdruck.</div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-row">
+        <div class="contact-label">TEL</div>
+        <div class="contact-value"><a href="tel:+4925471637">02547 · 1637</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-label">MAIL</div>
+        <div class="contact-value"><a href="mailto:info@schueer-immobilien.de">info@schueer-immobilien.de</a></div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-label">SITZ</div>
+        <div class="contact-value">Asbecker Straße 32<br>48720 Rosendahl</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© MMXXVI · SCHÜER® · ROSENDAHL</div>
+  <a href="../">← ZURÜCK ZUM MOODBOARD</a>
+</footer>
+
+</body>
+</html>

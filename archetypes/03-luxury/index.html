@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schüer Immobilien — Variante 03 · Luxury Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-2: #161616;
+    --ink-3: #1f1f1f;
+    --text: #ebe7df;
+    --text-soft: rgba(235, 231, 223, 0.6);
+    --gold: #d4af37;
+    --gold-deep: #b8932c;
+    --gold-soft: rgba(212, 175, 55, 0.18);
+    --max: 1280px;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--ink);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 300;
+  }
+  ::selection { background: var(--gold); color: var(--ink); }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.005em;
+  }
+  h1 { font-size: clamp(48px, 8vw, 128px); }
+  h2 { font-size: clamp(36px, 5vw, 84px); }
+  h3 { font-size: clamp(26px, 3vw, 42px); }
+  em, .italic { font-style: italic; color: var(--gold); font-weight: 500; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 580px;
+  }
+  .hairline { height: 1px; background: var(--gold-soft); }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    padding: 24px 40px;
+    background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(10,10,10,0.7));
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-soft);
+  }
+  .nav {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-brand .dot { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+  }
+  .nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .nav-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    padding: 12px 22px;
+    border: 1px solid var(--gold);
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--ink); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding: 180px 0 100px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse at center, rgba(212,175,55,0.08), transparent 60%),
+      linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.85) 100%),
+      url('https://cdn.prod.website-files.com/63be7bd04823666354300253/642d30d04eda5e159206b58e_DSC07868.jpg') center/cover;
+    filter: grayscale(0.25) saturate(0.85) brightness(0.6) sepia(0.12);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .hero-eyebrow {
+    margin-bottom: 36px;
+  }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(56px, 9vw, 152px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  .hero-h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .hero-rule {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 36px;
+  }
+  .hero-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--text);
+    opacity: 0.85;
+    max-width: 580px;
+    margin: 0 auto 48px;
+    line-height: 1.5;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hero-cta:hover { background: var(--gold); color: var(--ink); transform: translateY(-1px); }
+  .hero-meta {
+    position: absolute;
+    bottom: 32px; left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 3;
+    max-width: var(--max);
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── SECTION SCAFFOLD ─── */
+  section { padding: 140px 0; position: relative; }
+  .sec-head { margin-bottom: 80px; text-align: center; }
+  .sec-head .eyebrow { margin-bottom: 24px; }
+  .sec-head .eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .sec-head h2 { margin-bottom: 20px; }
+  .sec-head .lead { margin: 0 auto; }
+
+  /* ─── COLLECTION (3 Service Cards) ─── */
+  .collection {
+    border-top: 1px solid var(--gold-soft);
+    border-bottom: 1px solid var(--gold-soft);
+    background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+  }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gold-soft);
+  }
+  .coll-card {
+    background: var(--ink-2);
+    padding: 48px 36px 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .coll-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at top right, rgba(212,175,55,0.06), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .coll-card:hover { background: var(--ink-3); }
+  .coll-card:hover::before { opacity: 1; }
+  .coll-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 0.85;
+    color: var(--gold);
+    letter-spacing: -0.04em;
+  }
+  .coll-tag {
+    font-size: 10.5px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .coll-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .coll-title em { font-style: italic; color: var(--gold); }
+  .coll-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-soft);
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--gold-soft);
+  }
+  .coll-link {
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .coll-link .arrow { transition: transform 0.3s; }
+  .coll-card:hover .coll-link .arrow { transform: translateX(6px); }
+
+  /* ─── PORTRAIT / FAMILY ─── */
+  .portrait { padding: 160px 0; }
+  .portrait-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .portrait-img {
+    aspect-ratio: 4/5;
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.05) 0%, rgba(10,10,10,0.4) 100%),
+      url('https://cdn.prod.website-files.com/63be7bd04823666354300253/643fc2008d5a6af7b9d26f2e_DSC07083.jpg') center/cover;
+    filter: grayscale(0.4) sepia(0.15);
+    border: 1px solid var(--gold-soft);
+  }
+  .portrait-text .eyebrow { margin-bottom: 28px; }
+  .portrait-text h3 { margin-bottom: 32px; }
+  .portrait-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.85;
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+  .portrait-signature {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gold-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gold);
+  }
+  .portrait-signature small {
+    display: block;
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  /* ─── PULL QUOTE ─── */
+  .pull {
+    background: var(--ink-2);
+    border-top: 1px solid var(--gold-soft);
+    border-bottom: 1px solid var(--gold-soft);
+    padding: 160px 0;
+    text-align: center;
+  }
+  .pull-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 120px;
+    color: var(--gold);
+    line-height: 0.5;
+    margin-bottom: 36px;
+  }
+  .pull-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(32px, 4.5vw, 64px);
+    line-height: 1.18;
+    color: var(--text);
+    max-width: 1000px;
+    margin: 0 auto 44px;
+    letter-spacing: -0.005em;
+  }
+  .pull-text em { color: var(--gold); }
+  .pull-author {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    padding: 160px 0 80px;
+    text-align: center;
+  }
+  .contact h2 { margin-bottom: 28px; }
+  .contact .lead { margin: 0 auto 56px; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    margin: 0 auto 56px;
+    border-top: 1px solid var(--gold-soft);
+    border-bottom: 1px solid var(--gold-soft);
+  }
+  .contact-item {
+    padding: 36px 24px;
+    border-right: 1px solid var(--gold-soft);
+  }
+  .contact-item:last-child { border-right: none; }
+  .contact-label {
+    font-size: 10.5px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .contact-value a { color: inherit; text-decoration: none; transition: color 0.3s; }
+  .contact-value a:hover { color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--gold-soft);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 10.5px;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    font-family: 'Inter', sans-serif;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    .nav-links { display: none; }
+    .collection-grid, .portrait-grid, .contact-grid { grid-template-columns: 1fr; gap: 1px; }
+    .contact-item { border-right: none; border-bottom: 1px solid var(--gold-soft); }
+    section, .pull, .contact { padding: 80px 0; }
+    .hero { padding: 140px 0 80px; }
+    .hero-meta { font-size: 9px; letter-spacing: 0.2em; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="nav-brand">Schüer<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#portrait">Family</a>
+      <a href="#kontakt">Contact</a>
+    </div>
+    <a href="#kontakt" class="nav-cta">By Appointment</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow eyebrow">An Exclusive Collection — Münster · MMXXVI</div>
+    <h1 class="hero-h1">A residence<br><em>unlike</em><br>any other.</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-lead">
+      Family-led property since 1990. Crafted, managed and curated for those who treasure permanence.
+    </p>
+    <a href="#kontakt" class="hero-cta">Inquire — By Appointment</a>
+  </div>
+  <div class="hero-meta">
+    <span>— Anno MCMXC</span>
+    <span>Schüer Immobilien</span>
+    <span>Rosendahl · Münster</span>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The Collection</div>
+      <h2>Three disciplines.<br><em>One signature.</em></h2>
+      <p class="lead">From the first plan to the final key — every detail attended to by the family itself, never outsourced.</p>
+    </div>
+
+    <div class="collection-grid">
+      <a href="#" class="coll-card">
+        <div class="coll-num"><em>i</em></div>
+        <div class="coll-tag">— Architecture</div>
+        <div class="coll-title">Eigene <em>Projekt­entwicklung.</em></div>
+        <div class="coll-desc">Konzept, Plan und Realisierung im eigenen Haus. Materialien gewählt für ihre Würde, nicht ihren Preis.</div>
+        <span class="coll-link">Erfahren <span class="arrow">→</span></span>
+      </a>
+      <a href="#" class="coll-card">
+        <div class="coll-num"><em>ii</em></div>
+        <div class="coll-tag">— Tenancy</div>
+        <div class="coll-title">Curated <em>Vermietung.</em></div>
+        <div class="coll-desc">Modernisierte Bestände. Persönliche Auswahl. Schlüsselübergabe als Ritual, nicht als Termin.</div>
+        <span class="coll-link">Erfahren <span class="arrow">→</span></span>
+      </a>
+      <a href="#" class="coll-card">
+        <div class="coll-num"><em>iii</em></div>
+        <div class="coll-tag">— Stewardship</div>
+        <div class="coll-title">Anhaltende <em>Verwaltung.</em></div>
+        <div class="coll-desc">Werterhaltung über Generationen. Keine Hotline, kein Ticket — ein direkter Ansprechpartner für jedes Anliegen.</div>
+        <span class="coll-link">Erfahren <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTRAIT -->
+<section class="portrait" id="portrait">
+  <div class="wrap">
+    <div class="portrait-grid">
+      <div class="portrait-img"></div>
+      <div class="portrait-text">
+        <div class="eyebrow">The Family</div>
+        <h3>Karl &amp; Andreas Schüer.<br><em>Zweite Generation.</em></h3>
+        <p>Den Grundstein legte Karl Schüer Anfang der 90er Jahre — mit dem Weitblick, dass aus Bauen mehr werden kann als Stein und Mörtel.</p>
+        <p>Heute steht die zweite Generation an der Spitze. Andreas, Silke und Andrea Schüer führen das Familienunternehmen mit denselben Werten: Verlässlichkeit, Bodenständigkeit, Werterhaltung.</p>
+        <div class="portrait-signature">
+          Karl &amp; Andreas Schüer
+          <small>Gründer · Geschäftsführung</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pull">
+  <div class="wrap">
+    <div class="pull-mark">"</div>
+    <div class="pull-text">
+      We craft not just dwellings, but <em>true homes.</em><br>Behind this mission stands the entire family — already in the <em>second generation.</em>
+    </div>
+    <div class="pull-author">— Karl &amp; Andreas Schüer</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom: 24px;">By Appointment</div>
+    <h2>An invitation,<br><em>privately extended.</em></h2>
+    <p class="lead">Sprechen Sie uns persönlich an. Wir nehmen uns die Zeit, die Ihr Anliegen verdient.</p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label">Telephone</div>
+        <div class="contact-value"><a href="tel:+4925471637">02547 · 1637</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Correspondence</div>
+        <div class="contact-value"><a href="mailto:info@schueer-immobilien.de">info@<br>schueer-immobilien.de</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Residence</div>
+        <div class="contact-value">Asbecker Straße 32<br>48720 Rosendahl</div>
+      </div>
+    </div>
+
+    <a href="tel:+4925471637" class="hero-cta">Request an Appointment</a>
+  </div>
+</section>
+
+<footer>
+  <div>© MMXXVI · Schüer Immobilien · Rosendahl</div>
+  <a href="../">← Zurück zum Moodboard</a>
+</footer>
+
+</body>
+</html>

@@ -6,7 +6,7 @@
 <title>Schüer Immobilien — 4 Design-Archetypen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;900&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700;900&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -82,9 +82,32 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, box-shadow 0.4s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    position: relative;
   }
-  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 30px 60px -20px rgba(0,0,0,0.4); }
+  .card::after {
+    content: '↗ Variante öffnen';
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(204, 183, 135, 0.95);
+    color: #171228;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .card:hover::after { opacity: 1; transform: translateY(0); }
   .stage {
     aspect-ratio: 16 / 11;
     position: relative;
@@ -184,39 +207,40 @@
      2. BRUTALIST ARCHITECTURAL
      ───────────────────────────────────── */
   .stage-brutalist {
-    background: #ededed;
+    background: #ebe1c9;
     padding: 0;
-    color: #000;
-    font-family: 'Inter', sans-serif;
+    color: #171228;
+    font-family: 'Raleway', sans-serif;
     flex-direction: column;
   }
-  .brut-top { background: #000; color: #fff; padding: 10px 22px; display: flex; justify-content: space-between; align-items: center; }
-  .brut-top-name { font-family: 'Archivo Black', sans-serif; font-size: 14px; letter-spacing: -0.02em; }
-  .brut-top-nav { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #ff5733; }
+  .brut-top { background: #171228; color: #f3ecdc; padding: 10px 22px; display: flex; justify-content: space-between; align-items: center; }
+  .brut-top-name { font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: -0.015em; }
+  .brut-top-name em { font-style: italic; color: #ccb787; }
+  .brut-top-nav { font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase; color: #ccb787; }
   .brut-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
-  .brut-left { padding: 24px 22px; display: flex; flex-direction: column; justify-content: space-between; background: #ededed; }
-  .brut-num { font-family: 'Archivo Black', sans-serif; font-size: 100px; line-height: 0.85; color: #000; letter-spacing: -0.05em; }
-  .brut-meta { font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase; color: #000; border-top: 2px solid #000; padding-top: 8px; }
-  .brut-meta strong { color: #ff5733; font-weight: 700; }
+  .brut-left { padding: 24px 22px; display: flex; flex-direction: column; justify-content: space-between; background: #ebe1c9; }
+  .brut-num { font-family: 'Archivo Black', sans-serif; font-size: 100px; line-height: 0.85; color: #171228; letter-spacing: -0.05em; }
+  .brut-meta { font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase; color: #171228; border-top: 2px solid #171228; padding-top: 8px; }
+  .brut-meta strong { color: #a8895a; font-weight: 700; }
   .brut-right {
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.5)),
+      linear-gradient(180deg, rgba(23,18,40,0.2), rgba(23,18,40,0.7)),
       url('https://cdn.prod.website-files.com/63be7bd04823666354300253/643fc504284956148a5125e9_Cuttedpicture.png') center/cover;
     position: relative;
     padding: 24px 22px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    color: #fff;
+    color: #f3ecdc;
   }
   .brut-right-title {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 0.95;
     letter-spacing: -0.03em;
     text-transform: uppercase;
   }
-  .brut-right-tag { font-size: 8px; letter-spacing: 0.25em; text-transform: uppercase; color: #ff5733; margin-bottom: 6px; }
+  .brut-right-tag { font-size: 8px; letter-spacing: 0.28em; text-transform: uppercase; color: #ccb787; margin-bottom: 6px; }
 
   /* ─────────────────────────────────────
      3. LUXURY DARK
@@ -274,73 +298,70 @@
   }
 
   /* ─────────────────────────────────────
-     4. SWISS GRID
+     4. BOUTIQUE HOSPITALITY
      ───────────────────────────────────── */
-  .stage-swiss {
-    background: #fff;
+  .stage-boutique {
+    background: #f4ede2;
     padding: 0;
-    color: #000;
+    color: #2a3829;
     font-family: 'Inter', sans-serif;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
   }
-  .swiss-bar {
+  .boutique-bar {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 18px; border-bottom: 1px solid #000;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px; letter-spacing: 0.04em;
+    padding: 14px 24px;
+    font-size: 8px; letter-spacing: 0.34em; text-transform: uppercase;
+    color: #7a8a6e;
+    position: relative; z-index: 2;
   }
-  .swiss-bar strong { font-weight: 600; }
-  .swiss-body { flex: 1; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr auto; gap: 0; padding: 14px 18px; }
-  .swiss-h {
-    grid-column: 1 / 9;
-    grid-row: 1;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: clamp(20px, 3.5vw, 34px);
-    line-height: 1;
-    letter-spacing: -0.04em;
-    margin-bottom: 12px;
-  }
-  .swiss-h em { font-style: normal; color: #888; font-weight: 400; }
-  .swiss-data {
-    grid-column: 9 / 13;
-    grid-row: 1 / 3;
-    border-left: 1px solid #000;
-    padding-left: 12px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 8.5px;
-    line-height: 1.6;
-  }
-  .swiss-data div { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px dashed #ccc; }
-  .swiss-data div:last-child { border-bottom: none; }
-  .swiss-data strong { font-weight: 600; }
-  .swiss-meta {
-    grid-column: 1 / 9;
-    grid-row: 2;
-    align-self: end;
+  .boutique-name { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: #2a3829; letter-spacing: -0.01em; }
+  .boutique-body {
+    flex: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 8.5px;
-    border-top: 1px solid #000;
-    padding-top: 10px;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    padding: 0 24px 18px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
   }
-  .swiss-meta div { display: flex; flex-direction: column; gap: 2px; }
-  .swiss-meta .label { color: #888; font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.1em; }
-  .swiss-meta .val { font-weight: 600; }
-  .swiss-foot {
-    grid-column: 1 / 13;
-    grid-row: 3;
-    display: flex; justify-content: space-between;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 8px; color: #888;
-    border-top: 1px solid #000;
-    margin-top: 12px;
-    padding-top: 6px;
-    letter-spacing: 0.05em;
+  .boutique-text {
+    display: flex; flex-direction: column; gap: 10px;
   }
-  .swiss-foot .red { color: #c00; }
+  .boutique-eyebrow {
+    font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: #b8704c; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .boutique-eyebrow::before { content: ''; width: 20px; height: 1px; background: #b8704c; }
+  .boutique-h {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(26px, 4.5vw, 46px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: #2a3829;
+  }
+  .boutique-h em { font-style: italic; color: #7a8a6e; font-weight: 400; }
+  .boutique-meta {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 11px;
+    color: #5a6852;
+    margin-top: 6px;
+  }
+  .boutique-img {
+    aspect-ratio: 1/1;
+    border-radius: 0;
+    background:
+      linear-gradient(180deg, rgba(244,237,226,0.05), rgba(42,56,41,0.15)),
+      url('https://cdn.prod.website-files.com/63be7bd04823666354300253/642d30d04eda5e159206b58e_DSC07868.jpg') center/cover;
+    filter: sepia(0.15) saturate(0.92);
+    align-self: stretch;
+    min-height: 130px;
+  }
 
   /* ─────────────────────────────────────
      PAGE FOOTER
@@ -379,7 +400,7 @@
 <div class="grid">
 
   <!-- 01. EDITORIAL MONOGRAPH -->
-  <div class="card">
+  <a class="card" href="../" target="_blank" rel="noopener">
     <div class="stage stage-monograph">
       <div class="mono-bar">
         <div class="mono-logo">Schüer<span style="color:#a8895a">.</span></div>
@@ -401,13 +422,13 @@
       </p>
       <div class="fit">→ Für inhabergeführte Familien-Tradition</div>
     </div>
-  </div>
+  </a>
 
   <!-- 02. BRUTALIST ARCHITECTURAL -->
-  <div class="card">
+  <a class="card" href="02-brutalist/" target="_blank" rel="noopener">
     <div class="stage stage-brutalist">
       <div class="brut-top">
-        <div class="brut-top-name">SCHÜER®</div>
+        <div class="brut-top-name">Schüer<em>.</em></div>
         <div class="brut-top-nav">PLAN · BUILD · MANAGE</div>
       </div>
       <div class="brut-body">
@@ -416,24 +437,24 @@
           <div class="brut-meta">PROJEKT-Nº 1990 / <strong>MÜNSTER—WEST</strong></div>
         </div>
         <div class="brut-right">
-          <div class="brut-right-tag">— BUILT BY SCHÜER</div>
-          <div class="brut-right-title">CONCRETE.<br>STEEL.<br>WOOD.</div>
+          <div class="brut-right-tag">— BUILT BY SCHÜER · ANNO MCMXC</div>
+          <div class="brut-right-title">STEIN.<br>HAND.<br>WORT.</div>
         </div>
       </div>
     </div>
     <div class="meta">
-      <div class="num"><span>02 / IV — Bold Alternative</span><span class="tags">Brutalist · Raw · Architektur</span></div>
+      <div class="num"><span>02 / IV — Bold mit Schüer-CI</span><span class="tags">Brutalist · Raw · Architektur</span></div>
       <h2>Brutalist <em>Architectural</em></h2>
-      <div class="search">Archivo Black · Inter · #000 · #ededed · #ff5733</div>
+      <div class="search">Archivo Black + DM Serif Display · #171228 · #ebe1c9 · #ccb787</div>
       <p class="note">
-        Massive Slab-Typografie, sharp Grids, keine Rundungen. Stein, Stahl, Beton als visuelle Sprache. Bauplan-Ästhetik, oversized Numerals, monumentale Headlines. Für Projektentwickler die ihre Bauten als Statement zeigen wollen.
+        Massive Block-Typografie trifft auf die warme Schüer-CI: Beige Hintergründe statt steriler Gray, Brand-Beige als Akzent statt Industrie-Orange. Sharp Grids, oversized Numerals, monumentale Headlines — aber mit dem familiären Untergrund der Marke. Bauplan-Ästhetik für Projektentwickler, die ihre Bauten als Statement zeigen wollen.
       </p>
       <div class="fit">→ Für architektonisch ambitionierte Projektentwicklung</div>
     </div>
-  </div>
+  </a>
 
   <!-- 03. LUXURY DARK -->
-  <div class="card">
+  <a class="card" href="03-luxury/" target="_blank" rel="noopener">
     <div class="stage stage-luxury">
       <div class="lux-bar">
         <span>Schüer</span>
@@ -456,45 +477,35 @@
       </p>
       <div class="fit">→ Für Premium-Wohnungen ab 1M+ und Investment-Käufer</div>
     </div>
-  </div>
+  </a>
 
-  <!-- 04. SWISS GRID -->
-  <div class="card">
-    <div class="stage stage-swiss">
-      <div class="swiss-bar">
-        <strong>SCHÜER IMMOBILIEN — EST. 1990</strong>
-        <span>ROSENDAHL / DE — 48720</span>
+  <!-- 04. BOUTIQUE HOSPITALITY -->
+  <a class="card" href="04-boutique/" target="_blank" rel="noopener">
+    <div class="stage stage-boutique">
+      <div class="boutique-bar">
+        <span>— Münster · Westfalen</span>
+        <div class="boutique-name">Schüer</div>
+        <span>Collection · MMXXVI</span>
       </div>
-      <div class="swiss-body">
-        <div class="swiss-h">Verwaltung <em>im Kreis Coesfeld &amp; Münster</em></div>
-        <div class="swiss-data">
-          <div><span>EINHEITEN</span><strong>1.247</strong></div>
-          <div><span>STANDORTE</span><strong>14</strong></div>
-          <div><span>TEAM</span><strong>25</strong></div>
-          <div><span>JAHRE</span><strong>36</strong></div>
-          <div><span>STAND</span><strong>05/26</strong></div>
+      <div class="boutique-body">
+        <div class="boutique-text">
+          <div class="boutique-eyebrow">Wohnen als Ritual</div>
+          <div class="boutique-h">Räume<br>zum<br><em>Leben.</em></div>
+          <div class="boutique-meta">Familienhäuser &middot; Mietwohnungen &middot; seit 1990</div>
         </div>
-        <div class="swiss-meta">
-          <div><span class="label">→ Planung</span><span class="val">10 Projekte</span></div>
-          <div><span class="label">→ Vermietung</span><span class="val">98% Quote</span></div>
-          <div><span class="label">→ Verwaltung</span><span class="val">24h Ø Resp.</span></div>
-        </div>
-        <div class="swiss-foot">
-          <span>EX 01 / SECT A.1 / SCHÜER—DE</span>
-          <span class="red">● LIVE</span>
-        </div>
+        <div class="boutique-img"></div>
       </div>
     </div>
     <div class="meta">
-      <div class="num"><span>04 / IV — Data-Forward</span><span class="tags">Swiss · Rational · Technisch</span></div>
-      <h2>Swiss <em>Grid</em></h2>
-      <div class="search">Inter · IBM Plex Mono · #fff · #000 · #c00</div>
+      <div class="num"><span>04 / IV — Lifestyle-Editorial</span><span class="tags">Boutique · Warm · Hospitality</span></div>
+      <h2>Boutique <em>Hospitality</em></h2>
+      <div class="search">Fraunces + Inter · #f4ede2 · #2a3829 · #7a8a6e · #b8704c</div>
       <p class="note">
-        12-Spalten-Grid, monospace-Metadaten, dichte Information. Wie ein Spec-Sheet oder Aktien-Dashboard. Keine Pathos, alles Fakten. Stadtteil-Stats, Energie-Werte, Reaktionszeiten — transparent und nachprüfbar. Für daten-getriebene Käufer und institutionelle Mandate.
+        Wie ein Boutique-Hotel-Branding (Aman, Casa Cook, Cereal-Magazine). Warmes Cremeweiß, salbei-grüne Akzente, terrakotta-Highlights. Poetische Fraunces-Italic-Headlines mit viel Atem. Photography fokussiert Lifestyle statt Architektur — Wohnen wird zur emotionalen Erzählung statt Produkt.
       </p>
-      <div class="fit">→ Für Investoren, Sparkassen, datenaffine Käufer</div>
+      <div class="fit">→ Für emotive Vermarktung &amp; lifestyle-orientierte Käufer</div>
     </div>
-  </div>
+  </a>
 
 </div>
 
