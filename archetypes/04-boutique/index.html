@@ -430,6 +430,98 @@
   }
   footer a { color: var(--terra); text-decoration: none; }
 
+  /* ─────────────────────────────────────
+     BOUTIQUE MOTION (spring · organisch · weich)
+     ───────────────────────────────────── */
+
+  /* Spring-Fade: bouncy entrance mit overshoot */
+  .spring {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    transition:
+      opacity 0.9s cubic-bezier(0.34, 1.4, 0.5, 1),
+      transform 1.1s cubic-bezier(0.34, 1.4, 0.5, 1);
+  }
+  .spring.in-view { opacity: 1; transform: translateY(0) scale(1); }
+  .spring-d1 { transition-delay: 0.12s; }
+  .spring-d2 { transition-delay: 0.28s; }
+  .spring-d3 { transition-delay: 0.44s; }
+  .spring-d4 { transition-delay: 0.6s; }
+  .spring-d5 { transition-delay: 0.76s; }
+
+  /* Floating Hero-Image — gentles Auf-und-Ab */
+  @keyframes floatGentle {
+    0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+    50% { transform: translateY(-10px) rotate(0.4deg); }
+  }
+  .hero-img-wrap { animation: floatGentle 9s ease-in-out infinite; }
+
+  /* Value-Card Bloom: sage glow on hover */
+  .value {
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.6s cubic-bezier(0.34, 1.4, 0.5, 1),
+      box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+  .value::before {
+    content: '';
+    position: absolute; inset: -2px;
+    background: radial-gradient(circle at 30% 20%, rgba(122, 138, 110, 0.18), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .value:hover { transform: translateY(-6px) scale(1.01); }
+  .value:hover::before { opacity: 1; }
+  .value > * { position: relative; z-index: 1; }
+
+  /* Curved underline for nav links */
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -6px;
+    height: 6px;
+    border-bottom: 1.5px solid var(--terra);
+    border-radius: 50%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.5s cubic-bezier(0.34, 1.4, 0.5, 1);
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* Spring on buttons */
+  .btn-primary, .btn-ghost {
+    transition: all 0.45s cubic-bezier(0.34, 1.4, 0.5, 1) !important;
+  }
+  .btn-primary:active, .btn-ghost:active { transform: scale(0.96); }
+
+  /* Tag-Pill: gentle bob on hover */
+  .hero-img-tag {
+    transition: transform 0.6s cubic-bezier(0.34, 1.4, 0.5, 1), box-shadow 0.6s !important;
+  }
+  .hero-img-wrap:hover .hero-img-tag {
+    transform: translateY(-4px) rotate(-1deg);
+    box-shadow: 0 18px 38px -10px rgba(42,56,41,0.25);
+  }
+
+  /* Spread image organic crop */
+  .spread-img, .hero-img {
+    transition: filter 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.34, 1.4, 0.5, 1);
+  }
+  .spread-img.in-view, .hero-img.in-view {
+    filter: sepia(0.05) saturate(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spring { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hero-img-wrap { animation: none !important; }
+    .value:hover, .btn-primary:active, .btn-ghost:active { transform: none !important; }
+    .nav-links a::after { transform: scaleX(1) !important; }
+  }
+
   @media (max-width: 900px) {
     .wrap { padding: 0 24px; }
     .nav-links { display: none; }
@@ -462,12 +554,12 @@
   <div class="wrap">
     <div class="hero-inner">
       <div>
-        <div class="hero-eyebrow eyebrow">Wohnen als Ritual — seit 1990</div>
-        <h1 class="hero-h1">Räume,<br>die <em>bleiben.</em></h1>
-        <p class="hero-lead">
+        <div class="hero-eyebrow eyebrow spring spring-d1">Wohnen als Ritual — seit 1990</div>
+        <h1 class="hero-h1 spring spring-d2">Räume,<br>die <em>bleiben.</em></h1>
+        <p class="hero-lead spring spring-d3">
           Wir bauen, vermieten und verwalten Häuser im Kreis Coesfeld und Münster — als Familie, in zweiter Generation, mit der Geduld, die Zuhause braucht.
         </p>
-        <div class="hero-cta-row">
+        <div class="hero-cta-row spring spring-d4">
           <a href="#kontakt" class="btn-primary">Räume entdecken →</a>
           <a href="tel:+4925471637" class="btn-ghost">02547 · 1637</a>
         </div>
@@ -494,19 +586,19 @@
     </div>
 
     <div class="values-grid">
-      <a href="#" class="value">
+      <a href="#" class="value spring">
         <div class="value-num"><em>01</em></div>
         <div class="value-tag">— Planung</div>
         <div class="value-title">Häuser, die zur <em>Geschichte</em> werden.</div>
         <div class="value-desc">Eigene Projektentwicklung. Materialien, die altern dürfen. Räume, die mit ihren Bewohnern wachsen.</div>
       </a>
-      <a href="#" class="value">
+      <a href="#" class="value spring">
         <div class="value-num"><em>02</em></div>
         <div class="value-tag">— Vermietung</div>
         <div class="value-title">Schlüssel, die in der Hand <em>liegen bleiben.</em></div>
         <div class="value-desc">Persönliche Besichtigung. Selbstauskunft als Gespräch, nicht als Formular. Übergabe als Willkommen.</div>
       </a>
-      <a href="#" class="value">
+      <a href="#" class="value spring">
         <div class="value-num"><em>03</em></div>
         <div class="value-tag">— Verwaltung</div>
         <div class="value-title">Eine Tür, die <em>immer</em> offen steht.</div>
@@ -584,6 +676,58 @@
   <div>© MMXXVI · Schüer Immobilien · Rosendahl</div>
   <a href="../">← Zurück zum Moodboard</a>
 </footer>
+
+<script>
+  /* ─── BOUTIQUE MOTION ─── */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      document.querySelectorAll('.spring, .spread-img, .hero-img').forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+
+    /* Hero-Elemente sofort entfachen (kein scroll-wait) */
+    requestAnimationFrame(function () {
+      document.querySelectorAll('.hero .spring').forEach(function (el) { el.classList.add('in-view'); });
+    });
+
+    /* Scroll-Reveals via IntersectionObserver */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.spring, .spread-img, .hero-img').forEach(function (el) { io.observe(el); });
+
+    /* Stagger: Value-Cards mit aufsteigender Delay wenn sie zusammen in den Viewport kommen */
+    var values = Array.from(document.querySelectorAll('.values-grid .value'));
+    values.forEach(function (v, i) {
+      v.style.transitionDelay = (0.12 + i * 0.12) + 's';
+    });
+
+    /* Spread-Image: gentle scroll-parallax in beide Richtungen */
+    var spreadImg = document.querySelector('.spread-img');
+    if (spreadImg) {
+      var rafS = null;
+      function updateP() {
+        var r = spreadImg.getBoundingClientRect();
+        var vh = window.innerHeight;
+        if (r.bottom > 0 && r.top < vh) {
+          var progress = (vh - r.top) / (vh + r.height);
+          var offset = (progress - 0.5) * 30;
+          spreadImg.style.transform = 'translate3d(0, ' + offset.toFixed(1) + 'px, 0) scale(1.02)';
+        }
+        rafS = null;
+      }
+      window.addEventListener('scroll', function () { if (!rafS) rafS = requestAnimationFrame(updateP); }, { passive: true });
+      updateP();
+    }
+  })();
+</script>
 
 </body>
 </html>

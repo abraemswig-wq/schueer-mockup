@@ -346,6 +346,7 @@
   .about-img {
     background: url('https://cdn.prod.website-files.com/63be7bd04823666354300253/643fc2008d5a6af7b9d26f2e_DSC07083.jpg') center/cover;
     min-height: 500px;
+    overflow: hidden;
   }
 
   /* ─── CONTACT ─── */
@@ -416,6 +417,53 @@
   }
   footer a { color: var(--brand); text-decoration: none; }
 
+  /* ─────────────────────────────────────
+     BRUTALIST MOTION (mechanisch · gestuft · scharf)
+     ───────────────────────────────────── */
+  .shutter { display: inline-block; overflow: hidden; vertical-align: bottom; }
+  .shutter > span {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+  .shutter.in-view > span { transform: translateY(0); }
+  .shutter-d1 > span { transition-delay: 0.08s; }
+  .shutter-d2 > span { transition-delay: 0.18s; }
+  .shutter-d3 > span { transition-delay: 0.28s; }
+  .shutter-d4 > span { transition-delay: 0.38s; }
+
+  .clip-reveal {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1s cubic-bezier(0.77, 0, 0.18, 1);
+    will-change: clip-path;
+  }
+  .clip-reveal.in-view { clip-path: inset(0 0 0 0); }
+
+  .hero-num { transform-origin: center center; will-change: transform; }
+  .btn-snap { transition: transform 0.1s steps(2); will-change: transform; }
+  .counter { font-variant-numeric: tabular-nums; }
+
+  .svc { position: relative; }
+  .svc::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 0;
+    background: var(--brand);
+    transition: height 0.18s steps(4);
+  }
+  .svc:hover::before { height: 8px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shutter > span, .clip-reveal, .hero-num, .btn-snap, .svc::before {
+      transform: none !important;
+      transition: none !important;
+      clip-path: none !important;
+      height: 0 !important;
+    }
+    .shutter > span { transform: translateY(0) !important; }
+    .clip-reveal { clip-path: inset(0 0 0 0) !important; }
+  }
+
   @media (max-width: 900px) {
     .wrap { padding: 0 24px; }
     .nav-links { display: none; }
@@ -442,7 +490,7 @@
       <a href="#leistungen">MANAGE</a>
       <a href="#about">FAMILIE</a>
     </nav>
-    <a href="#kontakt" class="nav-cta">KONTAKT →</a>
+    <a href="#kontakt" class="nav-cta btn-snap">KONTAKT →</a>
   </div>
 </header>
 
@@ -462,9 +510,13 @@
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-right-tag">— BUILT BY SCHÜER · MÜNSTER</div>
-      <div class="hero-right-title">Stein.<br>Hand.<br><span>Wort.</span></div>
-      <div class="hero-right-desc">Drei Generationen bauen, vermieten und verwalten Immobilien im Kreis Coesfeld und Münster. Kein Outsourcing. Kein Callcenter. Nur Schüer.</div>
+      <div class="hero-right-tag shutter shutter-d1"><span>— BUILT BY SCHÜER · MÜNSTER</span></div>
+      <div class="hero-right-title">
+        <span class="shutter shutter-d2"><span>Stein.</span></span><br>
+        <span class="shutter shutter-d3"><span>Hand.</span></span><br>
+        <span class="shutter shutter-d4" style="color:var(--brand);"><span>Wort.</span></span>
+      </div>
+      <div class="hero-right-desc shutter shutter-d4"><span>Drei Generationen bauen, vermieten und verwalten Immobilien im Kreis Coesfeld und Münster. Kein Outsourcing. Kein Callcenter. Nur Schüer.</span></div>
     </div>
   </div>
 </section>
@@ -517,15 +569,15 @@
 
   <div class="facts-grid">
     <div class="fact">
-      <div class="fact-num"><em>36</em></div>
+      <div class="fact-num"><em class="counter" data-target="36">0</em></div>
       <div class="fact-label">JAHRE / SEIT MCMXC</div>
     </div>
     <div class="fact">
-      <div class="fact-num"><em>25</em>+</div>
+      <div class="fact-num"><em class="counter" data-target="25">0</em>+</div>
       <div class="fact-label">CREW / MITARBEITER</div>
     </div>
     <div class="fact">
-      <div class="fact-num"><em>1247</em></div>
+      <div class="fact-num"><em class="counter" data-target="1247">0</em></div>
       <div class="fact-label">UNITS / BAUEINHEITEN</div>
     </div>
     <div class="fact">
@@ -590,6 +642,76 @@
   <div>© MMXXVI · SCHÜER® · ROSENDAHL</div>
   <a href="../">← ZURÜCK ZUM MOODBOARD</a>
 </footer>
+
+<script>
+  /* ─── BRUTALIST MOTION ─── */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      document.querySelectorAll('.shutter, .clip-reveal').forEach(function (el) { el.classList.add('in-view'); });
+      document.querySelectorAll('.counter').forEach(function (el) { el.textContent = el.dataset.target || el.textContent; });
+      return;
+    }
+
+    /* IntersectionObserver: Reveals + Counter */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          if (e.target.dataset && e.target.dataset.target) animateCounter(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.shutter, .clip-reveal, .counter').forEach(function (el) { io.observe(el); });
+
+    /* Mechanical counter — gestuftes Easing, kein smooth */
+    function animateCounter(el) {
+      var target = parseInt(el.dataset.target, 10);
+      var duration = 1400;
+      var start = performance.now();
+      function tick(now) {
+        var t = Math.min((now - start) / duration, 1);
+        var stepped = Math.floor(t * 16) / 16; // 16 Schritte → mechanisch
+        var val = Math.round(target * stepped);
+        el.textContent = val;
+        if (t < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    /* Scroll-driven Mega-01: leichte Rotation + Scale */
+    var heroNum = document.querySelector('.hero-num');
+    if (heroNum) {
+      var rafN = null;
+      function updateNum() {
+        var sy = window.scrollY;
+        var rot = Math.min(sy / 40, 6); // max 6°
+        var scl = Math.max(1 - sy / 2500, 0.88);
+        heroNum.style.transform = 'rotate(' + rot.toFixed(2) + 'deg) scale(' + scl.toFixed(3) + ')';
+        rafN = null;
+      }
+      window.addEventListener('scroll', function () {
+        if (!rafN) rafN = requestAnimationFrame(updateNum);
+      }, { passive: true });
+    }
+
+    /* Snap-Magnetic: Button springt in 4px-Schritten zum Cursor */
+    document.querySelectorAll('.btn-snap').forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var dx = (e.clientX - r.left - r.width / 2) * 0.18;
+        var dy = (e.clientY - r.top - r.height / 2) * 0.18;
+        var sx = Math.round(dx / 3) * 3;
+        var sy = Math.round(dy / 3) * 3;
+        btn.style.transform = 'translate(' + sx + 'px, ' + sy + 'px)';
+      });
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+    });
+  })();
+</script>
 
 </body>
 </html>

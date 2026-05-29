@@ -436,6 +436,72 @@
   }
   footer a { color: var(--gold); text-decoration: none; }
 
+  /* ─────────────────────────────────────
+     LUXURY MOTION (langsam · restrained · cinematisch)
+     ───────────────────────────────────── */
+  .fade-slow {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1), transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-slow.in-view { opacity: 1; transform: translateY(0); }
+  .fade-d1 { transition-delay: 0.2s; }
+  .fade-d2 { transition-delay: 0.45s; }
+  .fade-d3 { transition-delay: 0.7s; }
+  .fade-d4 { transition-delay: 0.95s; }
+  .fade-d5 { transition-delay: 1.2s; }
+
+  .hairline-draw {
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hairline-draw.in-view { transform: scaleX(1); }
+  .hero-rule.hairline-draw.in-view { transition-delay: 1.1s; }
+
+  .word-reveal { opacity: 0; transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1); display: inline-block; }
+  .word-reveal.in-view { opacity: 1; }
+
+  .img-cinematic {
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1), transform 2.5s cubic-bezier(0.22, 1, 0.36, 1), filter 2s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: brightness(0.55);
+  }
+  .img-cinematic.in-view { opacity: 1; transform: scale(1); filter: brightness(1); }
+
+  .gold-cursor {
+    position: fixed; top: 0; left: 0;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(204, 183, 135, 0.1), transparent 60%);
+    pointer-events: none;
+    z-index: 60;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s;
+    opacity: 0;
+    will-change: transform;
+  }
+  body.has-cursor .gold-cursor { opacity: 1; }
+
+  .coll-card { overflow: hidden; }
+  .coll-card .gold-seam {
+    position: absolute; bottom: 0; left: 0;
+    height: 1px; width: 0;
+    background: var(--gold);
+    transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 3;
+  }
+  .coll-card:hover .gold-seam { width: 100%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-slow, .word-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .hairline-draw { transform: scaleX(1) !important; }
+    .img-cinematic { opacity: 1 !important; transform: none !important; filter: none !important; }
+    .gold-cursor { display: none !important; }
+  }
+  @media (hover: none) { .gold-cursor { display: none !important; } }
+
   @media (max-width: 900px) {
     .wrap { padding: 0 24px; }
     .nav-links { display: none; }
@@ -465,13 +531,13 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow eyebrow">Eine exklusive Auswahl — Münster · MMXXVI</div>
-    <h1 class="hero-h1">Ein Zuhause,<br>das seines­<em>gleichen</em><br>sucht.</h1>
-    <div class="hero-rule"></div>
-    <p class="hero-lead">
+    <div class="hero-eyebrow eyebrow fade-slow fade-d1">Eine exklusive Auswahl — Münster · MMXXVI</div>
+    <h1 class="hero-h1 fade-slow fade-d2">Ein Zuhause,<br>das seines­<em>gleichen</em><br>sucht.</h1>
+    <div class="hero-rule hairline-draw"></div>
+    <p class="hero-lead fade-slow fade-d4">
       Familiengeführtes Immobilien­unternehmen seit 1990. Gebaut, verwaltet und kuratiert für jene, die Beständigkeit zu schätzen wissen.
     </p>
-    <a href="#kontakt" class="hero-cta">Anfragen — Auf Termin</a>
+    <a href="#kontakt" class="hero-cta fade-slow fade-d5">Anfragen — Auf Termin</a>
   </div>
   <div class="hero-meta">
     <span>— Anno MCMXC</span>
@@ -490,21 +556,21 @@
     </div>
 
     <div class="collection-grid">
-      <a href="#" class="coll-card">
+      <a href="#" class="coll-card"><span class="gold-seam"></span>
         <div class="coll-num"><em>i</em></div>
         <div class="coll-tag">— Planung</div>
         <div class="coll-title">Eigene <em>Projekt­entwicklung.</em></div>
         <div class="coll-desc">Konzept, Plan und Realisierung im eigenen Haus. Materialien, gewählt für ihre Würde — nicht für ihren Preis.</div>
         <span class="coll-link">Mehr erfahren <span class="arrow">→</span></span>
       </a>
-      <a href="#" class="coll-card">
+      <a href="#" class="coll-card"><span class="gold-seam"></span>
         <div class="coll-num"><em>ii</em></div>
         <div class="coll-tag">— Vermietung</div>
         <div class="coll-title">Kuratierte <em>Vermietung.</em></div>
         <div class="coll-desc">Modernisierte Bestände. Persönliche Auswahl. Schlüssel­übergabe als Ritual — nicht als Termin.</div>
         <span class="coll-link">Mehr erfahren <span class="arrow">→</span></span>
       </a>
-      <a href="#" class="coll-card">
+      <a href="#" class="coll-card"><span class="gold-seam"></span>
         <div class="coll-num"><em>iii</em></div>
         <div class="coll-tag">— Verwaltung</div>
         <div class="coll-title">Anhaltende <em>Verwaltung.</em></div>
@@ -519,7 +585,7 @@
 <section class="portrait" id="portrait">
   <div class="wrap">
     <div class="portrait-grid">
-      <div class="portrait-img"></div>
+      <div class="portrait-img img-cinematic"></div>
       <div class="portrait-text">
         <div class="eyebrow">Die Familie</div>
         <h3>Karl &amp; Andreas Schüer.<br><em>Zweite Generation.</em></h3>
@@ -538,7 +604,7 @@
 <section class="pull">
   <div class="wrap">
     <div class="pull-mark">"</div>
-    <div class="pull-text">
+    <div class="pull-text" data-word-reveal>
       Wir schaffen nicht nur Wohnraum, sondern <em>ein echtes Zuhause.</em><br>Hinter dieser Mission steht die ganze Familie — und das bereits in der <em>zweiten Generation.</em>
     </div>
     <div class="pull-author">— Karl &amp; Andreas Schüer</div>
@@ -575,6 +641,90 @@
   <div>© MMXXVI · Schüer Immobilien · Rosendahl</div>
   <a href="../">← Zurück zum Moodboard</a>
 </footer>
+
+<div class="gold-cursor" aria-hidden="true"></div>
+
+<script>
+  /* ─── LUXURY MOTION ─── */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduce) {
+      document.querySelectorAll('.fade-slow, .hairline-draw, .img-cinematic').forEach(function (el) { el.classList.add('in-view'); });
+      var wr = document.querySelector('[data-word-reveal]');
+      if (wr) wr.querySelectorAll('.word-reveal').forEach(function (s) { s.classList.add('in-view'); });
+      return;
+    }
+
+    /* Word-by-word: pull-text wird in <span class="word-reveal"> aufgesplittet */
+    var pull = document.querySelector('[data-word-reveal]');
+    if (pull) {
+      // Walk through child nodes and wrap words (keep em tags intact)
+      function wrapWords(node) {
+        var children = Array.from(node.childNodes);
+        children.forEach(function (child) {
+          if (child.nodeType === Node.TEXT_NODE) {
+            var frag = document.createDocumentFragment();
+            var parts = child.textContent.split(/(\s+)/);
+            parts.forEach(function (p) {
+              if (p.trim() === '') {
+                frag.appendChild(document.createTextNode(p));
+              } else {
+                var span = document.createElement('span');
+                span.className = 'word-reveal';
+                span.textContent = p;
+                frag.appendChild(span);
+              }
+            });
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'BR') {
+            wrapWords(child);
+          }
+        });
+      }
+      wrapWords(pull);
+    }
+
+    /* IntersectionObserver — auch für Words */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          if (e.target.hasAttribute && e.target.hasAttribute('data-word-reveal')) {
+            var words = e.target.querySelectorAll('.word-reveal');
+            words.forEach(function (w, i) {
+              setTimeout(function () { w.classList.add('in-view'); }, i * 70);
+            });
+          }
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-slow, .hairline-draw, .img-cinematic, [data-word-reveal]').forEach(function (el) { io.observe(el); });
+
+    /* Initial Hero-Reveal (sofort, ohne Scroll-Wait) */
+    requestAnimationFrame(function () {
+      document.querySelectorAll('.hero-inner .fade-slow, .hero-inner .hairline-draw').forEach(function (el) { el.classList.add('in-view'); });
+    });
+
+    /* Gold Cursor Trail */
+    if (!window.matchMedia('(hover: none)').matches) {
+      var cursor = document.querySelector('.gold-cursor');
+      var rafC = null, lx = 0, ly = 0;
+      function move(e) {
+        lx = e.clientX; ly = e.clientY;
+        if (!rafC) rafC = requestAnimationFrame(apply);
+      }
+      function apply() {
+        cursor.style.transform = 'translate(' + lx + 'px, ' + ly + 'px) translate(-50%, -50%)';
+        rafC = null;
+      }
+      window.addEventListener('mousemove', function (e) { document.body.classList.add('has-cursor'); move(e); }, { passive: true });
+      window.addEventListener('mouseleave', function () { document.body.classList.remove('has-cursor'); });
+    }
+  })();
+</script>
 
 </body>
 </html>
